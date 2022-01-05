@@ -18,7 +18,11 @@ public class Config {
         }
     }
 
-//    public static double centresPerMonth() {
-//        return config.getProperty("centresPerMonth");
-//    }
+    public static double centresPerMonth() {
+        return Double.parseDouble(config.getProperty("centresPerMonth"));
+    }
+
+    public static int traineeUpperBound() {
+        return Integer.parseInt(config.getProperty("traineeUpperBound"));
+    }
 }
