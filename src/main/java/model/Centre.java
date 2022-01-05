@@ -17,6 +17,10 @@ public class Centre {
         return numberOfTrainees;
     }
 
+    public int getMaxSize(){
+        return maxSize;
+    }
+
     public void setNumberOfTrainees(int numberOfTrainees) {
         this.numberOfTrainees = numberOfTrainees;
     }
