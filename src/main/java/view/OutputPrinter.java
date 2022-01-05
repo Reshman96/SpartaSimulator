@@ -1,22 +1,22 @@
 package view;
 
 public final class OutputPrinter {
-    public static void printMonthNumber(int currentMonth) {
+    private static void printMonthNumber(int currentMonth) {
         System.out.println("Current month: " + currentMonth);
     }
-    public static void printFullCentres(int fullCentres) {
+    private static void printFullCentres(int fullCentres) {
         System.out.println("Number of full centres: " + fullCentres);
     }
 
-    public static void printOpenCentres(int openCentres) {
+    private static void printOpenCentres(int openCentres) {
         System.out.println("Number of open centres: " + openCentres);
     }
 
-    public static void printCurrentTrainees(int currentTrainees) {
+    private static void printCurrentTrainees(int currentTrainees) {
         System.out.println("Number of current trainees being trained: " + currentTrainees);
     }
 
-    public static void printWaitingList(int waitingListSize) {
+    private static void printWaitingList(int waitingListSize) {
         System.out.println("Number of trainees on the waiting list: " + waitingListSize);
     }
 
