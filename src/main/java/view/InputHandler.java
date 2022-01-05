@@ -28,5 +28,4 @@ public class InputHandler {
         traineeUpperBound = Config.traineeUpperBound();
         traineeLowerBound = Config.traineeLowerBound();
     }
-
 }
