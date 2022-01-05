@@ -6,7 +6,7 @@ public class FileOutputManager {
 
     private static BufferedWriter bufferedWriter;
 
-    private static void openCSVFile() {
+    public static void openCSVFile() {
         try {
             bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/csv_file_example.csv"));
             bufferedWriter.write("Month,Full_centres,Open_centres,Trainees_Training,Trainees_waiting\n");
@@ -15,7 +15,7 @@ public class FileOutputManager {
         }
     }
 
-    private static void writeDetailsToFile(int month, int traineesInTraining, int traineesWaiting, int openCentres, int fullCentres) {
+    public static void writeDetailsToFile(int month, int fullCentres, int openCentres, int traineesInTraining, int traineesWaiting) {
         try {
             bufferedWriter.write(month + "," + fullCentres + "," + openCentres + "," + traineesInTraining + "," +traineesWaiting + "\n");
         } catch (IOException e) {
@@ -23,7 +23,7 @@ public class FileOutputManager {
         }
     }
 
-    private static void closeCSVFile() {
+    public static void closeCSVFile() {
         try {
             bufferedWriter.close();
         } catch (IOException e) {

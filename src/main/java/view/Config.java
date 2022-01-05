@@ -12,7 +12,7 @@ public class Config {
     static {
         config = new Properties();
         try {
-            config.load(new BufferedReader(new FileReader("config.properties")));
+            config.load(new BufferedReader(new FileReader("src/main/resources/config.properties")));
         } catch (IOException e) {
             e.printStackTrace();
         }
