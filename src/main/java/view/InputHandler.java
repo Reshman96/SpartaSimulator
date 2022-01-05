@@ -19,8 +19,8 @@ public class InputHandler {
 
     public static void setStartingParameters(int numberOfMonths) {
         monthsOfSimulation = numberOfMonths;
-        InputHandler.centresPerMonth = Config.centresPerMonth();
-        InputHandler.traineeUpperBound = Config.traineeUpperBound();
+        centresPerMonth = Config.centresPerMonth();
+        traineeUpperBound = Config.traineeUpperBound();
     }
 
 }
