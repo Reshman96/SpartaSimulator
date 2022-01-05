@@ -23,6 +23,13 @@ public class InputHandler {
     }
 
     public static void setStartingParameters(int numberOfMonths) {
+        try {
+            if (numberOfMonths <= 0) {
+                throw new Exception("Provided value for numberOfMonths is too low. Value must be greater than 0.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         monthsOfSimulation = numberOfMonths;
         centresPerMonth = Config.centresPerMonth();
         traineeUpperBound = Config.traineeUpperBound();
