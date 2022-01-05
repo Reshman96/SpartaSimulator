@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class CentreManager {
-    private ArrayList<Centre> availableCentres = new ArrayList<>();
+    private static ArrayList<Centre> availableCentres = new ArrayList<>();
     private int fullCentres;
     private int traineesCurrentlyTraining;
 
@@ -19,8 +19,8 @@ public class CentreManager {
         return traineesCurrentlyTraining;
     }
 
-    public void addCentre(){
-        availableCentres.add(new Centre());
+    public static void addCentre(Centre currentCentre){
+        availableCentres.add(currentCentre);
     }
 
 
