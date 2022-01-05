@@ -4,24 +4,29 @@ import java.io.*;
 
 public class FileOutputManager {
 
-    private int currentMonth;
-    private int numOfOpenCentres;
-    private int numOFullCentres;
-    private int numOfTraineesTraining;
-    private int numOfTraineesWaiting;
+    private static BufferedWriter bufferedWriter;
 
-    private static void writeToFile(int month, int traineesInTraining, int traineesWaiting, int openCentres, int fullCentres) {
+    private static void openCSVFile() {
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/csv_file_example.txt"));
+            bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/csv_file_example.csv"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-            bufferedWriter.write("Month: " + month);
-            bufferedWriter.write("Full Centres: " + fullCentres);
-            bufferedWriter.write("Open Centres: " + openCentres);
-            bufferedWriter.write("Current Trainees: " + traineesInTraining);
-            bufferedWriter.write("Waiting list size: " + traineesWaiting);
+    private static void writeDetailsToFile(int month, int traineesInTraining, int traineesWaiting, int openCentres, int fullCentres) {
+        try {
+            bufferedWriter.write("Month,Full_centres,Open_centres,Trainees_Training,Trainees_waiting\n");
+            bufferedWriter.write(month + "," + fullCentres + "," + openCentres + "," + traineesInTraining + "," +traineesWaiting + "\n");
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void closeCSVFile() {
+        try {
             bufferedWriter.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
