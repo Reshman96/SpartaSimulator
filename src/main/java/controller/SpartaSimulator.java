@@ -1,7 +1,7 @@
 package controller;
 
 public class SpartaSimulator {
-    private MonthlyIncrementor monthlyIncrementor = new MonthlyIncrementor();
+    //private MonthlyIncrementor monthlyIncrementor = new MonthlyIncrementor();
     //private CentreManager centreManager = new CentreManager();
 
     private int months;
