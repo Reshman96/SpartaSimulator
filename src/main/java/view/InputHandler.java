@@ -20,4 +20,12 @@ public class InputHandler {
     public static void setMonthsOfSimulation(int numberOfMonths) {
         monthsOfSimulation = numberOfMonths;
     }
+
+    public static void setTraineeUpperBound(int traineeUpperBound) {
+        InputHandler.traineeUpperBound = traineeUpperBound;
+    }
+
+    public static void setCentresPerMonth(double centresPerMonth) {
+        InputHandler.centresPerMonth = centresPerMonth;
+    }
 }
