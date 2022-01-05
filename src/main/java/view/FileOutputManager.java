@@ -15,7 +15,7 @@ public class FileOutputManager {
         }
     }
 
-    public static void writeDetailsToFile(int month, int traineesInTraining, int traineesWaiting, int openCentres, int fullCentres) {
+    public static void writeDetailsToFile(int month, int fullCentres, int openCentres, int traineesInTraining, int traineesWaiting) {
         try {
             bufferedWriter.write(month + "," + fullCentres + "," + openCentres + "," + traineesInTraining + "," +traineesWaiting + "\n");
         } catch (IOException e) {
