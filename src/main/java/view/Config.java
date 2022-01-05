@@ -19,7 +19,7 @@ public class Config {
     }
 
     public static double centresPerMonth() {
-        Double result = 0.0;
+        double result = 0.0;
         try {
             result = Double.parseDouble(config.getProperty("centresPerMonth"));
         } catch (NumberFormatException e) {
@@ -29,7 +29,7 @@ public class Config {
     }
 
     public static int traineeUpperBound() {
-        Integer result = 0;
+        int result = 0;
         try {
             result = Integer.parseInt(config.getProperty("traineeUpperBound"));
         } catch (NumberFormatException e) {
@@ -39,10 +39,23 @@ public class Config {
     }
 
     public static int traineeLowerBound() {
-        Integer result = 0;
+        int result = 0;
         try {
             result = Integer.parseInt(config.getProperty("traineeLowerBound"));
         } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static int monthsOfSimulation() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("monthsOfSimulation"));
+            if (result <= 0) {
+                throw new Exception("Provided value for numberOfMonths is too low. Value must be greater than 0.");
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
