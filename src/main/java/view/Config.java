@@ -19,10 +19,32 @@ public class Config {
     }
 
     public static double centresPerMonth() {
-        return Double.parseDouble(config.getProperty("centresPerMonth"));
+        Double result = 0.0;
+        try {
+            result = Double.parseDouble(config.getProperty("centresPerMonth"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public static int traineeUpperBound() {
-        return Integer.parseInt(config.getProperty("traineeUpperBound"));
+        Integer result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("traineeUpperBound"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static int traineeLowerBound() {
+        Integer result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("traineeLowerBound"));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
