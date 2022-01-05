@@ -17,15 +17,10 @@ public class InputHandler {
         return monthsOfSimulation;
     }
 
-    public static void setMonthsOfSimulation(int numberOfMonths) {
+    public static void setStartingParameters(int numberOfMonths) {
         monthsOfSimulation = numberOfMonths;
+        InputHandler.centresPerMonth = Config.centresPerMonth();
+        InputHandler.traineeUpperBound = Config.traineeUpperBound();
     }
 
-    public static void setTraineeUpperBound(int traineeUpperBound) {
-        InputHandler.traineeUpperBound = traineeUpperBound;
-    }
-
-    public static void setCentresPerMonth(double centresPerMonth) {
-        InputHandler.centresPerMonth = centresPerMonth;
-    }
 }
