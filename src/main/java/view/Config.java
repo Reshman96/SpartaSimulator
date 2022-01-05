@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Config {
-    // src/main/resources/config.properties
     private static final Properties config;
 
     static {
@@ -24,6 +23,7 @@ public class Config {
             result = Double.parseDouble(config.getProperty("centresPerMonth"));
         } catch (NumberFormatException e) {
             e.printStackTrace();
+            System.err.println("Incorrect format for the value given for centresPerMonth in the config file.");
         }
         return result;
     }
@@ -34,6 +34,7 @@ public class Config {
             result = Integer.parseInt(config.getProperty("traineeUpperBound"));
         } catch (NumberFormatException e) {
             e.printStackTrace();
+            System.err.println("Incorrect format for the value given for traineeUpperBound in the config file.");
         }
         return result;
     }
@@ -44,6 +45,7 @@ public class Config {
             result = Integer.parseInt(config.getProperty("traineeLowerBound"));
         } catch (NumberFormatException e) {
             e.printStackTrace();
+            System.err.println("Incorrect format for the value given for traineeLowerBound in the config file.");
         }
         return result;
     }
@@ -55,8 +57,12 @@ public class Config {
             if (result <= 0) {
                 throw new Exception("Provided value for numberOfMonths is too low. Value must be greater than 0.");
             }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.err.println("Incorrect format for value given for monthsOfSimulation in the config file.");
         } catch (Exception e) {
             e.printStackTrace();
+            System.err.println("The value given for monthsOfSimulation in the config file isn't larger than 0.");
         }
         return result;
     }
