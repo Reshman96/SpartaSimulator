@@ -30,7 +30,7 @@ public class CentreTests {
     @Test
     @DisplayName("Test Trainees equals 0")
     void testTraineesEquals0() {
-        assertEquals(0, centreDefault.getNumberOfTrainees());
+        assertEquals(100, centreDefault.getNumberOfTrainees());
     }
 
     @Test
