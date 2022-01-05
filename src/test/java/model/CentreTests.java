@@ -4,8 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CentreTests {
 
@@ -30,6 +29,12 @@ public class CentreTests {
     @Test
     @DisplayName("Test Trainees equals 0")
     void testTraineesEquals0() {
+        assertEquals(0, centreCustom.getNumberOfTrainees());
+    }
+
+    @Test
+    @DisplayName("Test Trainees equals 100")
+    void testTraineesEquals100() {
         assertEquals(100, centreDefault.getNumberOfTrainees());
     }
 
