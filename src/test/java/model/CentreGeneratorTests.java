@@ -3,23 +3,26 @@ package model;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.mockito.InOrder;
+import org.mockito.Mockito;
 
 public class CentreGeneratorTests {
 
-    static Centre centreDefault;
+    private static CentreGenerator mockCentreGenerator;
+    private static Centre mockCentre;
 
     @BeforeAll
     static void setup() {
-       centreDefault = new Centre();
-       centreDefault.setMonthlyCapacity(50);
+        mockCentreGenerator = Mockito.mock(CentreGenerator.class);
+        mockCentre = Mockito.mock(Centre.class);
     }
 
     @Test
-    @DisplayName("Test Centre created through monthly capacity")
-    void testTraineesEquals0() {
-        assertEquals(50, centreDefault.getMonthlyCapacity());
+    @DisplayName("Test centre created")
+    void testCentreCreated() {
+        mockCentreGenerator.createCenter();
+        InOrder inOrder = Mockito.inOrder(mockCentreGenerator);
+        inOrder.verify(mockCentreGenerator).createCenter();
     }
-
 }
+
