@@ -3,9 +3,11 @@ package model.CentresTypes;
 import model.CourseType;
 
 public class TechCentre extends CentreType{
+    private final CourseType COURSETYPE;
 
     public TechCentre(CourseType courseType) {
-        super(courseType, 1);
+        super();
+        this.COURSETYPE = courseType;
     }
 
     @Override
@@ -13,4 +15,12 @@ public class TechCentre extends CentreType{
         return 200;
     }
 
+    @Override
+    public boolean attemptShutCentreDown() {
+        return getNumberOfTrainees() < 25;
+    }
+
+    public CourseType getCourseType() {
+        return COURSETYPE;
+    }
 }
