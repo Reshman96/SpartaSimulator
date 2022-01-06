@@ -15,4 +15,9 @@ public class RandomNumberGenerator {
         int randomInt = randomGenerator.nextInt(upperBound - lowerBound + 1) + lowerBound;
         return randomInt;
     }
+
+    public static CourseType getRandomCourse() {
+        CourseType[] courseTypes = CourseType.values();
+        return courseTypes[getRandomInt(0, courseTypes.length - 1)];
+    }
 }
