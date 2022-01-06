@@ -17,7 +17,6 @@ public abstract class CentreType {
         this.failuresAllowed = failiuresAllowed;
     }
 
-
     public CourseType setCourseType(){return courseType;}
 
     public int getNumberOfTrainees() {

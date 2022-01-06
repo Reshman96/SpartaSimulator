@@ -1,13 +1,15 @@
 package model;
 
+import model.CentresTypes.CentreType;
+
 import java.util.ArrayList;
 
 public class CentreManager {
-    private static ArrayList<Centre> availableCentres = new ArrayList<>();
+    private static ArrayList<CentreType> availableCentres = new ArrayList<>();
     private int fullCentres;
     private int traineesCurrentlyTraining;
 
-    public ArrayList<Centre> getAvailableCentres() {
+    public ArrayList<CentreType> getAvailableCentres() {
         return availableCentres;
     }
 
@@ -19,7 +21,7 @@ public class CentreManager {
         return traineesCurrentlyTraining;
     }
 
-    public static void addCentre(Centre currentCentre){
+    public static void addCentre(CentreType currentCentre){
         availableCentres.add(currentCentre);
     }
 
