@@ -9,7 +9,7 @@ public class FileOutputManager {
 
     public static void openCSVFile() {
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/csv_file_example.csv", true));
+            bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/sparta_simulation_csv.csv", true));
             bufferedWriter.write(LocalDateTime.now() + " #\n");
             bufferedWriter.write("Month,Full_centres,Open_centres,Trainees_Training,Trainees_waiting\n\n");
         } catch (IOException e) {
