@@ -7,9 +7,6 @@ import java.util.Properties;
 
 public class DefaultConfigMaker {
 
-    private static BufferedWriter bufferedWriter;
-
-
     public static void createDefaultConfig() {
         Properties properties = new Properties();
         try {
