@@ -1,73 +1,38 @@
 package controller;
 
-public class SpartaSimulator {
-    //private MonthlyIncrementor monthlyIncrementor = new MonthlyIncrementor();
-    //private CentreManager centreManager = new CentreManager();
+import model.Centre;
+import model.CentreManager;
+import view.InputHandler;
+import view.OutputManager;
 
-    private int months;
+import java.util.ArrayList;
+
+public class SpartaSimulator {
+    private MonthlyIncrementer monthlyIncrementor;
+    private CentreManager centreManager = new CentreManager();
+
+    private int months ;
     private int numOfOpenCentres;
     private int numOfFullCentres;
     private int numOfTraineesTraining;
-    private int numOfTraineesWaiting;
+    //change from integer to trainee
+    private ArrayList<Integer> waitingList = new ArrayList<>();
 
-    public SpartaSimulator(int months, int numOfOpenCentres, int numOfFullCentres, int numOfTraineesTraining, int numOfTraineesWaiting) {
-        this.months = months;
-        this.numOfOpenCentres = numOfOpenCentres;
-        this.numOfFullCentres = numOfFullCentres;
-        this.numOfTraineesTraining = numOfTraineesTraining;
-        this.numOfTraineesWaiting = numOfTraineesWaiting;
+    public SpartaSimulator() {
+        this.months = InputHandler.getMonthsOfSimulation();
     }
 
-    public SpartaSimulator(int months) {
-        this.months = months;
-        this.numOfOpenCentres = 0;
-        this.numOfFullCentres = 0;
-        this.numOfTraineesTraining = 0;
-        this.numOfTraineesWaiting = 0;
-    }
+    public void simulator(){
 
-    public int getMonths() {
-        return months;
-    }
+        for (int i = 0; i < months; i++) {
+            MonthlyIncrementer.incrementMonths(i);
+        }
+        this.numOfOpenCentres = centreManager.getAvailableCentres().size();
+        this.numOfFullCentres = centreManager.getFullCentres();
+        this.numOfTraineesTraining = centreManager.getTraineesCurrentlyTraining();
+        //this.waitingList = ;
 
-    public void setMonths(int months) {
-        this.months = months;
-    }
-
-    public int getNumOfOpenCentres() {
-        return numOfOpenCentres;
-    }
-
-    public void setNumOfOpenCentres(int numOfOpenCentres) {
-        this.numOfOpenCentres = numOfOpenCentres;
-    }
-
-    public int getNumOfFullCentres() {
-
-        return numOfFullCentres;
-    }
-
-    public void setNumOfFullCentres(int numOfFullCentres) {
-        this.numOfFullCentres = numOfFullCentres;
-    }
-
-    public int getNumOfTraineesTraining() {
-        return numOfTraineesTraining;
-    }
-
-    public void setNumOfTraineesTraining(int numOfTraineesTraining) {
-        this.numOfTraineesTraining = numOfTraineesTraining;
-    }
-
-    public int getNumOfTraineesWaiting() {
-        return numOfTraineesWaiting;
-    }
-
-    public void setNumOfTraineesWaiting(int numOfTraineesWaiting) {
-        this.numOfTraineesWaiting = numOfTraineesWaiting;
-    }
-
-    public void incrementMonth(){
+        OutputManager.outputFinalMonth(months, numOfFullCentres, numOfOpenCentres, numOfTraineesTraining, waitingList.size());
 
     }
 }
