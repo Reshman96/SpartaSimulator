@@ -1,9 +1,12 @@
 package model;
 
+import model.CentresTypes.CentreType;
+import model.CentresTypes.TechCentre;
+
 public class CentreGenerator {
 
         public void createCenter() {
-            Centre singleCenter = new Centre();
+            CentreType singleCenter = new TechCentre(CourseType.JAVA);
             CentreManager.addCentre(singleCenter);
         }
     }
