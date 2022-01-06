@@ -21,12 +21,12 @@ public class Config {
         }
     }
 
-    public static double centresPerMonth() {
-        double result = 0.0;
+    public static int traineeLowerBound() {
+        int result = 0;
         try {
-            result = Double.parseDouble(config.getProperty("centresPerMonth"));
+            result = Integer.parseInt(config.getProperty("traineeLowerBound"));
         } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for centresPerMonth in the config file.");
+            System.err.println("Incorrect format for the value given for traineeLowerBound in the config file.");
         }
         return result;
     }
@@ -41,12 +41,12 @@ public class Config {
         return result;
     }
 
-    public static int traineeLowerBound() {
-        int result = 0;
+    public static double centresPerMonth() {
+        double result = 0.0;
         try {
-            result = Integer.parseInt(config.getProperty("traineeLowerBound"));
+            result = Double.parseDouble(config.getProperty("centresPerMonth"));
         } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for traineeLowerBound in the config file.");
+            System.err.println("Incorrect format for the value given for centresPerMonth in the config file.");
         }
         return result;
     }
@@ -72,6 +72,126 @@ public class Config {
             result = Integer.parseInt(config.getProperty("existingCentres"));
         } catch (NumberFormatException e) {
             System.err.println("Incorrect format for the value given for existingCentres in the config file.");
+        }
+        return result;
+    }
+
+    public static boolean displayEveryMonth() {
+        boolean result = false;
+        try {
+            result = Boolean.parseBoolean(config.getProperty("displayEveryMonth"));
+        } catch (Exception e) {
+            System.err.println("Incorrect format for the value given for displayEveryMonth in the config file.");
+        }
+        return result;
+    }
+
+    public static int trainingHubMinimumTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("trainingHubMinimumTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for trainingHubMinimumTrainees in the config file.");
+        }
+        return result;
+    }
+
+    public static int trainingHubMaximumTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("trainingHubMaximumTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for trainingHubMaximumTrainees in the config file.");
+        }
+        return result;
+    }
+
+    public static int trainingHubConsecutiveMonthsOfInadequateTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("trainingHubConsecutiveMonthsOfInadequateTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for trainingHubConsecutiveMonthsOfInadequateTrainees in the config file.");
+        }
+        return result;
+    }
+
+    public static int trainingHubsPerMonth() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("trainingHubsPerMonth"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for trainingHubsPerMonth in the config file.");
+        }
+        return result;
+    }
+
+    public static int bootcampMinimumTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("bootcampMinimumTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for bootcampMinimumTrainees in the config file.");
+        }
+        return result;
+    }
+
+    public static int bootcampMaximumTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("bootcampMaximumTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for bootcampMaximumTrainees in the config file.");
+        }
+        return result;
+    }
+
+    public static int bootcampConsecutiveMonthsOfInadequateTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("bootcampConsecutiveMonthsOfInadequateTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for bootcampConsecutiveMonthsOfInadequateTrainees in the config file.");
+        }
+        return result;
+    }
+
+    public static int bootcampTotalCreations() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("bootcampTotalCreations"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for bootcampTotalCreations in the config file.");
+        }
+        return result;
+    }
+
+    public static int techCentreMinimumTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("techCentreMinimumTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for techCentreMinimumTrainees in the config file.");
+        }
+        return result;
+    }
+
+    public static int techCentreMaximumTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("techCentreMaximumTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for techCentreMaximumTrainees in the config file.");
+        }
+        return result;
+    }
+
+    public static int techCentresConsecutiveMonthsOfInadequateTrainees() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("techCentresConsecutiveMonthsOfInadequateTrainees"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for techCentresConsecutiveMonthsOfInadequateTrainees in the config file.");
         }
         return result;
     }
