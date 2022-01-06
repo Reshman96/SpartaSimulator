@@ -1,13 +1,15 @@
 package model.CentresTypes;
 
+import model.CourseType;
+
 public abstract class CentreType {
     private int numberOfTrainees;
     private int monthlyCapacity;
     private int maxSize;
-    private String courseType;
+    private CourseType courseType;
     private int failuresAllowed;
 
-    public CentreType(String courseType, int failiuresAllowed) {
+    public CentreType(CourseType courseType, int failiuresAllowed) {
         this.numberOfTrainees = 0;
         this.monthlyCapacity = 0;
         this.maxSize = getMaxSize();
@@ -16,7 +18,7 @@ public abstract class CentreType {
     }
 
 
-    public String setCourseType(){return courseType;}
+    public CourseType setCourseType(){return courseType;}
 
     public int getNumberOfTrainees() {
         return numberOfTrainees;
@@ -40,7 +42,7 @@ public abstract class CentreType {
         return maxSize == numberOfTrainees;
     }
 
-    public String getCourseType() {
+    public CourseType getCourseType() {
         return courseType;
     }
 

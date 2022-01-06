@@ -1,8 +1,10 @@
 package model.CentresTypes;
 
+import model.CourseType;
+
 public class TechCentre extends CentreType{
 
-    public TechCentre(String courseType) {
+    public TechCentre(CourseType courseType) {
         super(courseType, 1);
     }
 
