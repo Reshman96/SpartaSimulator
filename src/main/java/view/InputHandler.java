@@ -5,6 +5,7 @@ public class InputHandler {
     private static int traineeLowerBound;
     private static double centresPerMonth;
     private static int monthsOfSimulation;
+    private static int existingCentres;
 
     public static int getTraineeUpperBound() {
         return traineeUpperBound;
@@ -22,10 +23,15 @@ public class InputHandler {
         return traineeLowerBound;
     }
 
+    public static int getExistingCentres() {
+        return existingCentres;
+    }
+
     public static void setStartingParameters() {
         monthsOfSimulation = Config.monthsOfSimulation();
         centresPerMonth = Config.centresPerMonth();
         traineeUpperBound = Config.traineeUpperBound();
         traineeLowerBound = Config.traineeLowerBound();
+        existingCentres = Config.existingCentres();
     }
 }
