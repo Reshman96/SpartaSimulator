@@ -21,11 +21,11 @@ public class FileOutputManager {
             bufferedWriter.write("Month," + month + ",\n");
             bufferedWriter.write("Centre,Training_Hub,Bootcamp,Tech_java,Tech_C#,T_Data,T_DevOps,T_Business\n");
             bufferedWriter.write("Full_Centres," + fullCentres[0] + "," + fullCentres[1] + "," +  fullCentres[2] + ","+ fullCentres[3] + "," +  fullCentres[4] + "," +  fullCentres[5] + "," +  fullCentres[6] + "," +"\n");
-            bufferedWriter.write("Open_Centres," + openCentres[8] + "," + openCentres[9] + "," +  openCentres[10] + ","+ openCentres[11] + "," +  openCentres[12] + "," +  openCentres[13] + "," +  openCentres[14] + "," + "\n");
-            bufferedWriter.write("Closed_Centres," + closedCentres[15] + "," + closedCentres[16] + "," +  closedCentres[17] + ","+ closedCentres[18] + "," +  closedCentres[19] + "," +  closedCentres[20] + "," +  closedCentres[6] + "," + "\n\n");
+            bufferedWriter.write("Open_Centres," + openCentres[0] + "," + openCentres[1] + "," +  openCentres[2] + ","+ openCentres[3] + "," +  openCentres[4] + "," +  openCentres[5] + "," +  openCentres[6] + "," + "\n");
+            bufferedWriter.write("Closed_Centres," + closedCentres[0] + "," + closedCentres[1] + "," +  closedCentres[2] + ","+ closedCentres[3] + "," +  closedCentres[4] + "," +  closedCentres[5] + "," +  closedCentres[6] + "," + "\n\n");
             bufferedWriter.write("Trainees,Java,C#,Data,DevOps,Business,\n");
-            bufferedWriter.write("Trainees_Training," + traineesInTraining[7] + "," + traineesInTraining[8] + "," +  traineesInTraining[9] + ","+ traineesInTraining[10] + "," +  traineesInTraining[11] + "\n");
-            bufferedWriter.write("Trainees_Waiting," + traineesWaiting[7] + "," + traineesWaiting[8] + "," +  traineesWaiting[9] + ","+ traineesWaiting[10] + "," +  traineesWaiting[11] + "\n\n");
+            bufferedWriter.write("Trainees_Training," + traineesInTraining[0] + "," + traineesInTraining[1] + "," +  traineesInTraining[2] + ","+ traineesInTraining[3] + "," +  traineesInTraining[4] + "\n");
+            bufferedWriter.write("Trainees_Waiting," + traineesWaiting[0] + "," + traineesWaiting[1] + "," +  traineesWaiting[2] + ","+ traineesWaiting[3] + "," +  traineesWaiting[4] + "\n\n");
 
         } catch (IOException e) {
             e.printStackTrace();
