@@ -1,21 +1,16 @@
 package model.CentresTypes;
 
-import model.CourseType;
-
 public abstract class CentreType {
     private int numberOfTrainees;
     private int monthlyCapacity;
     private int maxSize;
-    private CourseType courseType;
-    private int failuresAllowed;
 
-    public CentreType(CourseType courseType, int failiuresAllowed) {
+    public CentreType() {
         this.numberOfTrainees = 0;
         this.monthlyCapacity = 0;
         this.maxSize = getMaxSize();
-        this.courseType = courseType;
-        this.failuresAllowed = failiuresAllowed;
     }
+
 
     public CourseType setCourseType(){return courseType;}
 
@@ -41,17 +36,5 @@ public abstract class CentreType {
         return maxSize == numberOfTrainees;
     }
 
-    public CourseType getCourseType() {
-        return courseType;
-    }
-
-    public int getFailuresAllowed() {
-        return failuresAllowed;
-    }
-
-    public boolean attemptShutCentreDown(){
-        // returns true if the centre should be shut down, false if it still has one or more "strikes" left
-        failuresAllowed --;
-        return failuresAllowed <= 0;
-    }
+    public abstract boolean attemptShutCentreDown();
 }

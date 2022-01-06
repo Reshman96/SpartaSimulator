@@ -25,5 +25,4 @@ public class CentreManager {
         availableCentres.add(currentCentre);
     }
 
-
 }
