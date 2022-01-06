@@ -10,7 +10,7 @@ public class Config {
     private static final Properties config;
 
     static {
-        if(!new File("src/main/resources/config.properties").exists()){
+        if (!new File("src/main/resources/config.properties").exists()) {
             DefaultConfigMaker.createDefaultConfig();
         }
         config = new Properties();
