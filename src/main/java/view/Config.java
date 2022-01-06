@@ -1,6 +1,7 @@
 package view;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -9,6 +10,9 @@ public class Config {
     private static final Properties config;
 
     static {
+        if(!new File("src/main/resources/config.properties").exists()){
+            DefaultConfigMaker.createDefaultConfig();
+        }
         config = new Properties();
         try {
             config.load(new BufferedReader(new FileReader("src/main/resources/config.properties")));
