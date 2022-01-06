@@ -30,7 +30,6 @@ public class DefaultConfigMaker {
             properties.setProperty("techCentreMaximumTrainees", "200");
             properties.setProperty("techCentresConsecutiveMonthsOfInadequateTrainees", "1");
 
-
             properties.store(new FileWriter("src/main/resources/config.properties"), null);
 
         } catch (IOException e) {
