@@ -5,12 +5,14 @@ public abstract class CentreType {
     private int monthlyCapacity;
     private int maxSize;
     private String courseType;
+    private int failuresAllowed;
 
-    public CentreType(String courseType) {
+    public CentreType(String courseType, int failiuresAllowed) {
         this.numberOfTrainees = 0;
         this.monthlyCapacity = 0;
         this.maxSize = getMaxSize();
         this.courseType = courseType;
+        this.failuresAllowed = failiuresAllowed;
     }
 
 
@@ -38,22 +40,17 @@ public abstract class CentreType {
         return maxSize == numberOfTrainees;
     }
 
-    /*
-        private int legs;
-
-    public Animal(int legs) {
-        this.legs = legs;
+    public String getCourseType() {
+        return courseType;
     }
 
-    public abstract String eat();
-    public abstract String sound();
-
-    public int getLegs() {
-        return legs;
+    public int getFailuresAllowed() {
+        return failuresAllowed;
     }
 
-    public void sleep(){
-        System.out.println("I'm asleep");
+    public boolean attemptShutCentreDown(){
+        // returns true if the centre should be shut down, false if it still has one or more "strikes" left
+        failuresAllowed --;
+        return failuresAllowed <= 0;
     }
-     */
 }

@@ -2,12 +2,12 @@ package model.CentresTypes;
 
 public class Bootcamp extends CentreType{
 
-    public Bootcamp(String courseType) {
-        super(courseType);
+    public Bootcamp() {
+        super(null, 3);
     }
 
     @Override
     public int getMaxSize() {
-        return 0;
+        return 500;
     }
 }

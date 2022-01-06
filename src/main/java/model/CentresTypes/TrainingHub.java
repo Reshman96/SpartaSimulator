@@ -2,12 +2,12 @@ package model.CentresTypes;
 
 public class TrainingHub extends CentreType {
 
-    public TrainingHub(String courseType) {
-        super(courseType);
+    public TrainingHub() {
+        super(null, 1);
     }
 
     @Override
     public int getMaxSize() {
-        return 0;
+        return 100;
     }
 }
