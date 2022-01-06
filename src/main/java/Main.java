@@ -7,6 +7,7 @@ public class Main {
         InputHandler.setStartingParameters();
 
         int months = InputHandler.getMonthsOfSimulation();
+        // The code below is hardcoded temporary data that needs to be replaced by Model/Controller
         int[] fullCentres = {1, 2, 3, 4, 5, 6, 7};
         int[] openCentres = {1, 2, 3, 4, 5, 6, 7};
         int[] closedCentres = {1, 2, 3, 4, 5, 6, 7};
