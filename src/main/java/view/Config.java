@@ -61,4 +61,14 @@ public class Config {
         }
         return result;
     }
+
+    public static int existingCentres() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("existingCentres"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for existingCentres in the config file.");
+        }
+        return result;
+    }
 }
