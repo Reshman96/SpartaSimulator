@@ -1,6 +1,7 @@
 package model.CentreTypes;
 
 import model.CentresTypes.TechCentre;
+import model.CentresTypes.TrainingHub;
 import model.CourseType;
 import org.junit.jupiter.api.*;
 
@@ -19,6 +20,7 @@ public class TechCentreTests {
     @DisplayName("CanYouCreateMe")
     void canYouCreateMe() {
         TechCentre techCentre = new TechCentre(CourseType.JAVA);
+        Assertions.assertInstanceOf(TechCentre.class, techCentre);
     }
 
     @Test

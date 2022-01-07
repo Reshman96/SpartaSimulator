@@ -1,6 +1,7 @@
 package model.CentreTypes;
 
 import model.CentresTypes.Bootcamp;
+import model.CentresTypes.TechCentre;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,6 +14,7 @@ public class BootCampTests {
     @BeforeEach
     void setup(){
         bootCamp = new Bootcamp();
+        Assertions.assertInstanceOf(Bootcamp.class, bootCamp);
     }
 
     @Test
