@@ -10,7 +10,9 @@ import java.util.Iterator;
 
 public class CentreManager {
     private static ArrayList<CentreType> availableCentres = new ArrayList<>();
-    private static int[] fullCentres = {0,0,0};
+    // [0] is Training Hubs, [1] is BootCamp, [2-6] are the types of Tech centres
+    private static int[] fullCentres = {0,0,0,0,0,0,0};
+    private static int[] closedCentres = {0,0,0,0,0,0,0};
     private static int traineesCurrentlyTraining;
 
     public ArrayList<CentreType> getAvailableCentres() {
@@ -19,6 +21,10 @@ public class CentreManager {
 
     public static int[] getFullCentres() {
         return fullCentres;
+    }
+
+    public static int[] getClosedCentres() {
+        return closedCentres;
     }
 
     public static int getTraineesCurrentlyTraining() {
@@ -31,7 +37,7 @@ public class CentreManager {
 
     public static int[] countOpenCentres(){
         // assumes closed centres will be removed from our list
-        int[] centreTypes = {0,0,0};
+        int[] centreTypes = {0,0,0,0,0,0,0};
         for (CentreType openCentre : availableCentres){
             if (openCentre.getClass() == TrainingHub.class){
                 centreTypes[0] ++;
@@ -40,22 +46,10 @@ public class CentreManager {
                 centreTypes[1] ++;
             }
             if (openCentre.getClass() == TechCentre.class){
-                centreTypes[2] ++;
+                centreTypes[((TechCentre) openCentre).getCourseTypeIndex()] ++;
             }
         }
         return centreTypes;
-    }
-
-    public static void addFullCentre(int typeOfCentre){
-        if (typeOfCentre == 0){
-            fullCentres[0] ++;
-        }
-        if (typeOfCentre == 1){
-            fullCentres[1] ++;
-        }
-        if (typeOfCentre == 2){
-            fullCentres[2] ++;
-        }
     }
 
     /**
@@ -77,11 +71,33 @@ public class CentreManager {
                     fullCentres[1] ++;
                 }
                 if (centre.getClass() == TechCentre.class){
-                    fullCentres[2] ++;
+                    fullCentres[((TechCentre) centre).getCourseTypeIndex()] ++;
                 }
             }
         }
     }
+
+    public static void attemptCloseCentres(){
+        Iterator<CentreType> it = availableCentres.iterator();
+
+        while (it.hasNext()) {
+            CentreType centre = it.next();
+            if (centre.attemptShutCentreDown()) {
+                it.remove();
+
+                if (centre.getClass() == TrainingHub.class){
+                    closedCentres[0] ++;
+                }
+                if (centre.getClass() == Bootcamp.class){
+                    closedCentres[1] ++;
+                }
+                if (centre.getClass() == TechCentre.class){
+                    closedCentres[((TechCentre) centre).getCourseTypeIndex()] ++;
+                }
+            }
+        }
+    }
+
 
     public static void resetCentreArray(){
         availableCentres.clear();

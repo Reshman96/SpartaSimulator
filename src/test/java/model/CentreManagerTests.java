@@ -14,6 +14,7 @@ public class CentreManagerTests {
     @Nested
     @DisplayName("Testing Output types")
     class testingOutputTypes {
+
         @Test
         @DisplayName("does getFullCentres return an int array?")
         void doesGetFullCentresReturnAnIntArray() {
@@ -31,7 +32,7 @@ public class CentreManagerTests {
         CentreManager.addCentre(trainingHub);
         CentreManager.addCentre(bootcamp);
         CentreManager.addCentre(techCentre);
-        Assertions.assertArrayEquals(new int[]{1, 1, 1}, CentreManager.countOpenCentres());
+        Assertions.assertArrayEquals(new int[]{1, 1, 1,0,0,0,0}, CentreManager.countOpenCentres());
     }
 
     @Test
@@ -41,15 +42,19 @@ public class CentreManagerTests {
         CentreManager.addCentre(bootcamp);
         CentreManager.addCentre(bootcamp);
         CentreManager.addCentre(bootcamp);
-        Assertions.assertArrayEquals(new int[]{0, 3, 0}, CentreManager.countOpenCentres());
+        Assertions.assertArrayEquals(new int[]{0, 3, 0,0,0,0,0}, CentreManager.countOpenCentres());
     }
 
     @Test
-    @DisplayName("Do getFullCentres and addFullCentres work properly together? ")
-    void doGetFullCentresAndAddFullCentresWorkProperlyTogether() {
-        CentreManager.addFullCentre(0);
-        CentreManager.addFullCentre(0);
-        CentreManager.addFullCentre(1);
-        Assertions.assertArrayEquals(new int[]{2, 1, 0}, CentreManager.getFullCentres());
+    @DisplayName("Attempt to close one of each type of centre and check closedCentres")
+    void attemptToCloseOneOfEachTypeOfCentreAndCheckClosedCentres() {
+        TrainingHub trainingHub = new TrainingHub();
+        Bootcamp bootcamp = new Bootcamp();
+        TechCentre techCentre = new TechCentre(CourseType.DEVOPS);
+        CentreManager.addCentre(trainingHub);
+        CentreManager.addCentre(bootcamp);
+        CentreManager.addCentre(techCentre);
+        CentreManager.attemptCloseCentres();
+        Assertions.assertArrayEquals(new int[]{1, 0, 0,0,0,1,0}, CentreManager.getClosedCentres());
     }
 }
