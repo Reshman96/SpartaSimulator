@@ -12,8 +12,7 @@ public class RandomNumberGenerator {
             lowerBound = storageInt;
         }
         Random randomGenerator = new Random();
-        int randomInt = randomGenerator.nextInt(upperBound - lowerBound + 1) + lowerBound;
-        return randomInt;
+        return randomGenerator.nextInt(upperBound - lowerBound + 1) + lowerBound;
     }
 
     public static CourseType getRandomCourse() {
