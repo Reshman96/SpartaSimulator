@@ -10,17 +10,17 @@ import java.util.ArrayList;
 public class CentreManager {
     private static ArrayList<CentreType> availableCentres = new ArrayList<>();
     private static int[] fullCentres = {0,0,0};
-    private int traineesCurrentlyTraining;
+    private static int traineesCurrentlyTraining;
 
     public ArrayList<CentreType> getAvailableCentres() {
         return availableCentres;
     }
 
-    public int[] getFullCentres() {
+    public static int[] getFullCentres() {
         return fullCentres;
     }
 
-    public int getTraineesCurrentlyTraining() {
+    public static int getTraineesCurrentlyTraining() {
         return traineesCurrentlyTraining;
     }
 
