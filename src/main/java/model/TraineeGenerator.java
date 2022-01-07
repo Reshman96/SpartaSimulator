@@ -53,9 +53,7 @@ public class TraineeGenerator {
         for (int i = 0; i < traineeTypeArray[4]; i++) {
             traineeArrayList.add(new Trainee(CourseType.BUSINESS));
         }
-
         Collections.shuffle(traineeArrayList);
-
         return traineeArrayList;
     }
 
