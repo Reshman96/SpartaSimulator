@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import model.CentresTypes.CentreType;
+import view.InputHandler;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class MonthlyIncrementer {
         setCentreMonthlyCapacity();
 
         //add new trainees to waiting list
-        //waitingList add(getNewTrainees());
+        TraineeManager.addRandomNumberOfTrainees();
 
         addTraineesToCentres(); //pass waiting list
         if (currentMonth >= 3) {
@@ -30,7 +31,7 @@ public class MonthlyIncrementer {
     private static void setCentreMonthlyCapacity() {
         // pass through array list of available centres
         for (CentreType centre: CentreManager.getAvailableCentres()) {
-            centre.setMonthlyCapacity(RandomNumberGenerator.getRandomInt(1,50));
+            centre.setMonthlyCapacity(RandomNumberGenerator.getRandomInt(InputHandler.getTraineeLowerBound(),InputHandler.getTraineeUpperBound()));
         }
     }
 
