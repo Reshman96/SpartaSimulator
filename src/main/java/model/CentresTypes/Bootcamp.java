@@ -14,7 +14,7 @@ public class Bootcamp extends CentreType{
     public Bootcamp(){
         super();
         failCount = 0;
-        this.failsAllowed = 3;
+        this.failsAllowed = 2;
     }
 
     @Override

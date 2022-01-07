@@ -14,11 +14,13 @@ public class CentreGenerator {
             switch(randomChoice) {
                 case 1:
                    CentreManager.addCentre(new TrainingHub());
+                   CentreManager.addCentre(new TrainingHub());
+                   CentreManager.addCentre(new TrainingHub());
                    break;
-                case 2:
+                case 3:
                     CentreManager.addCentre(new Bootcamp());
                     break;
-                case 3:
+                case 2:
                     CentreManager.addCentre(new TechCentre(RandomNumberGenerator.getRandomCourse()));
                     break;
             }

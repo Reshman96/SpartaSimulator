@@ -16,13 +16,12 @@ public class CentreGeneratorTests {
         mockCentreGenerator = Mockito.mock(CentreGenerator.class);
         mockCentre = Mockito.mock(Centre.class);
     }
-
-    //@Test
-    //@DisplayName("Test centre created")
-    //void testCentreCreated() {
-    //    mockCentreGenerator.createCenter();
-    //    InOrder inOrder = Mockito.inOrder(mockCentreGenerator);
-    //    inOrder.verify(mockCentreGenerator).createCenter();
-    //}
+//    @Test
+//    @DisplayName("Test centre created")
+//    void testCentreCreated() {
+//        mockCentreGenerator.createCenter();
+//        InOrder inOrder = Mockito.inOrder(mockCentreGenerator);
+//        inOrder.verify(mockCentreGenerator).createCenter();
+//    }
 }
 
