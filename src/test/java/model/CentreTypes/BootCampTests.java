@@ -1,8 +1,12 @@
 package model.CentreTypes;
 
 import model.CentresTypes.Bootcamp;
+import model.Trainee;
 import model.CentresTypes.TechCentre;
+
 import org.junit.jupiter.api.*;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +18,11 @@ public class BootCampTests {
     @BeforeEach
     void setup(){
         bootCamp = new Bootcamp();
-        Assertions.assertInstanceOf(Bootcamp.class, bootCamp);
+        ArrayList<Trainee> dummyList = new ArrayList<>();
+        for(int i = 0; i < 24; i++) {
+            dummyList.add(new Trainee());
+        }
+        bootCamp.setTraineeList(dummyList);
     }
 
     @Test
@@ -23,29 +31,27 @@ public class BootCampTests {
         Assertions.assertEquals(500, bootCamp.getMaxSize());
     }
 
-//    @Test
-//    @DisplayName("Attempt centre shutdown at high attendance")
-//    void attemptCentreShutdownAtHighAttendance() {
-//        bootCamp.setNumberOfTrainees(new int[] {10,10,10,10,10});
-//        assertFalse(bootCamp.attemptShutCentreDown());
-//    }
-//
-//    @Test
-//    @DisplayName("Attempt centre shutdown at low attendance third strike")
-//    void attemptCentreShutdownAtLowAttendanceThirdStrike() {
-//        bootCamp.setNumberOfTrainees(new int[] {1,1,1,1,1});
-//        bootCamp.attemptShutCentreDown();
-//        bootCamp.attemptShutCentreDown();
-//        assertTrue(bootCamp.attemptShutCentreDown());
-//    }
-//
-//    @Test
-//    @DisplayName("Attempt centre shutdown at low attendance for a second consecutive time")
-//    void attemptCentreShutdownAtLowAttendanceForASecondConsecutiveTime() {
-//        bootCamp.setNumberOfTrainees(new int[] {1,1,1,1,1});
-//        bootCamp.attemptShutCentreDown();
-//        assertFalse(bootCamp.attemptShutCentreDown());
-//    }
+    @Test
+    @DisplayName("Attempt centre shutdown at high attendance")
+    void attemptCentreShutdownAtHighAttendance() {
+        bootCamp.addTrainee(new Trainee());
+        assertFalse(bootCamp.attemptShutCentreDown());
+    }
+
+    @Test
+    @DisplayName("Attempt centre shutdown at low attendance third strike")
+    void attemptCentreShutdownAtLowAttendanceThirdStrike() {
+        bootCamp.attemptShutCentreDown();
+        bootCamp.attemptShutCentreDown();
+        assertTrue(bootCamp.attemptShutCentreDown());
+    }
+
+    @Test
+    @DisplayName("Attempt centre shutdown at low attendance for a second consecutive time")
+    void attemptCentreShutdownAtLowAttendanceForASecondConsecutiveTime() {
+        bootCamp.attemptShutCentreDown();
+        assertFalse(bootCamp.attemptShutCentreDown());
+    }
 
     @AfterEach
     void teardown() {
