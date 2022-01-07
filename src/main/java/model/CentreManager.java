@@ -6,6 +6,7 @@ import model.CentresTypes.TechCentre;
 import model.CentresTypes.TrainingHub;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class CentreManager {
@@ -13,6 +14,7 @@ public class CentreManager {
     // [0] is Training Hubs, [1] is BootCamp, [2-6] are the types of Tech centres
     private static int[] fullCentres = {0,0,0,0,0,0,0};
     private static int[] closedCentres = {0,0,0,0,0,0,0};
+    private static int[] fullTrainees = {0,0,0,0,0};
     private static int traineesCurrentlyTraining;
 
     public ArrayList<CentreType> getAvailableCentres() {
@@ -22,6 +24,8 @@ public class CentreManager {
     public static int[] getFullCentres() {
         return fullCentres;
     }
+
+    public static int[] getFullTrainees() {return fullTrainees;}
 
     public static int[] getClosedCentres() {
         return closedCentres;
@@ -63,7 +67,7 @@ public class CentreManager {
             CentreType centre = it.next();
             if (centre.isFull()) {
                 it.remove();
-
+                fullTrainees = addTraineeTypeArrays(centre.getTypesOfTrainees(), fullTrainees);
                 if (centre.getClass() == TrainingHub.class){
                     fullCentres[0] ++;
                 }
@@ -77,14 +81,16 @@ public class CentreManager {
         }
     }
 
-    public static void attemptCloseCentres(){
+    public static int[] attemptCloseCentres(){
         Iterator<CentreType> it = availableCentres.iterator();
+
+        int[] displacedTrainees = {0,0,0,0,0};
 
         while (it.hasNext()) {
             CentreType centre = it.next();
             if (centre.attemptShutCentreDown()) {
                 it.remove();
-
+                displacedTrainees = addTraineeTypeArrays(displacedTrainees,centre.getTypesOfTrainees());
                 if (centre.getClass() == TrainingHub.class){
                     closedCentres[0] ++;
                 }
@@ -96,6 +102,15 @@ public class CentreManager {
                 }
             }
         }
+        return displacedTrainees;
+    }
+
+    private static int[] addTraineeTypeArrays(int[] array1, int[] array2){
+        int[] sumArray = {0,0,0,0,0};
+        for (int i = 0; i < 5; i++) {
+            sumArray[i] = array1[i] + array2[i];
+        }
+        return sumArray;
     }
 
 
