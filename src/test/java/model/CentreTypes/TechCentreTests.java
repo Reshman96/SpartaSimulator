@@ -36,4 +36,11 @@ public class TechCentreTests {
         techCentre.setMonthlyCapacity(setGetInt);
         Assertions.assertEquals(setGetInt, techCentre.getMonthlyCapacity());
     }
+
+    @Test
+    @DisplayName("does getCourseTypeIndex of DATA return 3?")
+    void doesGetCourseTypeIndexOfDataReturn3() {
+        TechCentre techCentre = new TechCentre(CourseType.DATA);
+        Assertions.assertEquals(4, techCentre.getCourseTypeIndex());
+    }
 }
