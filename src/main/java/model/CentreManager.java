@@ -6,6 +6,7 @@ import model.CentresTypes.TechCentre;
 import model.CentresTypes.TrainingHub;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CentreManager {
     private static ArrayList<CentreType> availableCentres = new ArrayList<>();
@@ -54,6 +55,31 @@ public class CentreManager {
         }
         if (typeOfCentre == 2){
             fullCentres[2] ++;
+        }
+    }
+
+    /**
+     * Method to remove full centres from the availableCentres arraylist and count
+     * them in the fullCentres int array
+     */
+    public static void moveFullCentres(){
+        Iterator<CentreType> it = availableCentres.iterator();
+
+        while (it.hasNext()) {
+            CentreType centre = it.next();
+            if (centre.isFull()) {
+                it.remove();
+
+                if (centre.getClass() == TrainingHub.class){
+                    fullCentres[0] ++;
+                }
+                if (centre.getClass() == Bootcamp.class){
+                    fullCentres[1] ++;
+                }
+                if (centre.getClass() == TechCentre.class){
+                    fullCentres[2] ++;
+                }
+            }
         }
     }
 
