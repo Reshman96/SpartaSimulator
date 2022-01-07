@@ -12,7 +12,7 @@ public abstract class CentreType {
     }
 
 
-    public CourseType setCourseType(){return courseType;}
+    //public CourseType setCourseType(){return courseType;}
 
     public int getNumberOfTrainees() {
         return numberOfTrainees;
