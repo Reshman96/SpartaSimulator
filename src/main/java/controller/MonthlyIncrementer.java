@@ -14,12 +14,11 @@ public class MonthlyIncrementer {
         setCentreMonthlyCapacity();
 
         //add new trainees to waiting list
-        //TraineeManager.addRandomNumberOfTrainees();
+        TraineeManager.addRandomNumberOfTrainees();
 
-        addWaitingListToCentres(); //pass waiting list
+        addWaitingListToCentres();
         if (currentMonth >= 3) {
-            //returns
-            CentreManager.attemptCloseCentres();
+            addTraineesToCentres(TraineeGenerator.getTraineesFromArray(CentreManager.attemptCloseCentres()));
         }
     }
 
@@ -32,6 +31,17 @@ public class MonthlyIncrementer {
         for (CentreType centre: CentreManager.getAvailableCentres()) {
             centre.setMonthlyCapacity(RandomNumberGenerator.getRandomInt(1,50)); //change 50 to monthly capacity variable
         }
+    }
+
+    private static void addTraineeToCentre(Trainee trainee, CentreType centre){
+        /*
+        if(!centre.isFull() && !centre.getMonthlyCapacity() == 0) {
+            centreTrainees.add(trainee);
+            remove trainee from arrayList
+        }else {
+            add trainee to waitingList
+        }
+        */
     }
 
     private static void addWaitingListToCentres() {
@@ -59,18 +69,7 @@ public class MonthlyIncrementer {
         */
     }
 
-    private static void addTraineeToCentre(Trainee trainee, CentreType centre){
-        /*
-        if(!centre.isFull() && !centre.getMonthlyCapacity() == 0) {
-            centreTrainees.add(trainee);
-            remove trainee from arrayList
-        }else {
-            add trainee to waitingList
-        }
-        */
-    }
-
-    private static void addTraineesToCentres() { //pass in array list of trainees
+    private static void addTraineesToCentres(ArrayList trainees) { //pass in array list of trainees
         /*
 
          */
