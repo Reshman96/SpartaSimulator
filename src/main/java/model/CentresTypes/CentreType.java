@@ -11,9 +11,6 @@ public abstract class CentreType {
         this.maxSize = getMaxSize();
     }
 
-
-    public CourseType setCourseType(){return courseType;}
-
     public int getNumberOfTrainees() {
         return numberOfTrainees;
     }
