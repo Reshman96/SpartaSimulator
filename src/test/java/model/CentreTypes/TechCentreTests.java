@@ -22,22 +22,6 @@ public class TechCentreTests {
     }
 
     @Test
-    @DisplayName("Return number of trainees")
-    void returnNumberOfTrainees() {
-        TechCentre techCentre = new TechCentre(CourseType.JAVA);
-        Assertions.assertEquals(0, techCentre.getNumberOfTrainees());
-    }
-
-    @Test
-    @DisplayName("Set and get monthly capacity")
-    void setAndGetMonthlyCapacity() {
-        TechCentre techCentre = new TechCentre(CourseType.JAVA);
-        int setGetInt = 30;
-        techCentre.setMonthlyCapacity(setGetInt);
-        Assertions.assertEquals(setGetInt, techCentre.getMonthlyCapacity());
-    }
-
-    @Test
     @DisplayName("does getCourseTypeIndex of DATA return 3?")
     void doesGetCourseTypeIndexOfDataReturn3() {
         TechCentre techCentre = new TechCentre(CourseType.DATA);
