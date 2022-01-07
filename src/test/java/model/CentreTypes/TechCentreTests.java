@@ -2,7 +2,10 @@ package model.CentreTypes;
 
 import model.CentresTypes.TechCentre;
 import model.CourseType;
+import model.Trainee;
 import org.junit.jupiter.api.*;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,7 +45,10 @@ public class TechCentreTests {
     @Test
     @DisplayName("Attempt high attendance shutdown")
     void attemptHighAttendanceShutdown() {
-        techCentre.setNumberOfTrainees(new int[] {10,10,10,10,10});
+        for(int i = 0; i < 25; i++) {
+            techCentre.addTrainee(new Trainee());
+        }
+
         assertFalse(techCentre.attemptShutCentreDown());
     }
 
