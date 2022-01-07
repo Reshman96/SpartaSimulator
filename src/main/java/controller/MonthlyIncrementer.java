@@ -1,9 +1,8 @@
 package controller;
 
-import model.CentreGenerator;
-import model.RandomNumberGenerator;
-import model.Trainee;
-import model.TraineeGenerator;
+import model.*;
+import model.CentresTypes.CentreType;
+
 import java.util.ArrayList;
 
 public class MonthlyIncrementer {
@@ -22,7 +21,6 @@ public class MonthlyIncrementer {
         if (currentMonth >= 3) {
             checkCentreClosure();
         }
-
     }
 
     private static void createCentre() {
@@ -30,7 +28,10 @@ public class MonthlyIncrementer {
     }
 
     private static void setCentreMonthlyCapacity() {
-
+        // pass through array list of available centres
+        for (CentreType centre: CentreManager.getAvailableCentres()) {
+            centre.setMonthlyCapacity(RandomNumberGenerator.getRandomInt(1,50));
+        }
     }
 
     private static ArrayList<Trainee> getNewTrainees() {
@@ -40,8 +41,8 @@ public class MonthlyIncrementer {
     private static void addTraineesToCentres() { //pass in arraylist of trainees
         //
         /*
-        CentreManager availableCentres
-        for(Trainee trainee : arrayList) {
+        ArrayList<CentreType> availableCentres = CentreManager.getAvailableCentres();
+        for(Trainee trainee : availableCentres) {
             generate random number to select the centre
             check if the centre isn't full, isn't at monthly capacity, and if tech centre it's the same course type as the trainee
                 centreTrainees.add(trainee);
@@ -55,8 +56,8 @@ public class MonthlyIncrementer {
     private static void checkCentreClosure() {
         //check centres for closure
         /*
-        for(CentreType centre : CentreManager availableCentres) {
-            if(numberOfTrainees < 25) {
+        for (CentreType centre: CentreManager.getAvailableCentres()) {
+            if(centre.attemptShutCentreDown()) {
                 centre safetyNet--;
             }
             if(centre safetyNet == 0) {
@@ -67,5 +68,4 @@ public class MonthlyIncrementer {
         }
         */
     }
-
 }
