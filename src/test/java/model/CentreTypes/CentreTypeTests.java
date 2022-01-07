@@ -29,13 +29,13 @@ public class CentreTypeTests {
         Assertions.assertEquals(0, techCentre.getNumberOfTrainees());
     }
 
-    @Test
-    @DisplayName("Return number of trainees x")
-    void returnNumberOfTraineesX() {
-        CentreType bootCamp = new Bootcamp();
-        bootCamp.setNumberOfTrainees(new int[] {4,5,1,2,4});
-        Assertions.assertEquals(16, bootCamp.getNumberOfTrainees());
-    }
+//    @Test
+//    @DisplayName("Return number of trainees x")
+//    void returnNumberOfTraineesX() {
+//        CentreType bootCamp = new Bootcamp();
+//        bootCamp.setNumberOfTrainees(new int[] {4,5,1,2,4});
+//        Assertions.assertEquals(16, bootCamp.getNumberOfTrainees());
+//    }
 
     @Test
     @DisplayName("Test isFull for false")
@@ -44,11 +44,11 @@ public class CentreTypeTests {
         assertFalse(trainingHub.isFull());
     }
 
-    @Test
-    @DisplayName("Test isFull for true")
-    void testIsFullForTrue() {
-        TrainingHub trainingHub = new TrainingHub();
-        trainingHub.setNumberOfTrainees(new int[]{trainingHub.getMaxSize(), 0, 0, 0, 0});
-        assertTrue(trainingHub.isFull());
-    }
+//    @Test
+//    @DisplayName("Test isFull for true")
+//    void testIsFullForTrue() {
+//        TrainingHub trainingHub = new TrainingHub();
+//        trainingHub.setNumberOfTrainees(new int[]{trainingHub.getMaxSize(), 0, 0, 0, 0});
+//        assertTrue(trainingHub.isFull());
+//    }
 }

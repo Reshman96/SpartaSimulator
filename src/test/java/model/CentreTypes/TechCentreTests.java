@@ -41,12 +41,12 @@ public class TechCentreTests {
         assertTrue(techCentre.attemptShutCentreDown());
     }
 
-    @Test
-    @DisplayName("Attempt high attendance shutdown")
-    void attemptHighAttendanceShutdown() {
-        techCentre.setNumberOfTrainees(new int[] {10,10,10,10,10});
-        assertFalse(techCentre.attemptShutCentreDown());
-    }
+//    @Test
+//    @DisplayName("Attempt high attendance shutdown")
+//    void attemptHighAttendanceShutdown() {
+//        techCentre.setNumberOfTrainees(new int[] {10,10,10,10,10});
+//        assertFalse(techCentre.attemptShutCentreDown());
+//    }
 
     @AfterEach
     void tearDown(){
