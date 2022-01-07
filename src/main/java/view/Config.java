@@ -25,37 +25,11 @@ public class Config {
     }
 
     public static int traineeLowerBound() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("traineeLowerBound"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for traineeLowerBound in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for traineeLowerBound in the config file isn't larger than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("traineeLowerBound");
     }
 
     public static int traineeUpperBound() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("traineeUpperBound"));
-            if (result <= 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for traineeUpperBound in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for traineeUpperBound in the config file isn't larger than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return zeroOrLowerNumErrorChecker("traineeUpperBound");
     }
 
     public static double centresPerMonth() {
@@ -76,78 +50,26 @@ public class Config {
     }
 
     public static int monthsOfSimulation() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("monthsOfSimulation"));
-            if (result <= 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for value given for monthsOfSimulation in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for monthsOfSimulation in the config file isn't larger than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return zeroOrLowerNumErrorChecker("monthsOfSimulation");
     }
 
     public static int existingCentres() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("existingCentres"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for existingCentres in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for existingCentres in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("existingCentres");
     }
 
     public static int centreMonthlyIntakeLowerBound() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("centreMonthlyIntakeLowerBound"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for centreMonthlyIntakeLowerBound in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for centreMonthlyIntakeLowerBound in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("centreMonthlyIntakeLowerBound");
     }
 
     public static int centreMonthlyIntakeUpperBound() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("centreMonthlyIntakeUpperBound"));
-            if (result <= 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for centreMonthlyIntakeUpperBound in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for centreMonthlyIntakeUpperBound in the config file isn't larger than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return zeroOrLowerNumErrorChecker("centreMonthlyIntakeUpperBound");
     }
 
     public static boolean displayEveryMonth() {
         boolean result = false;
         try {
             String displayEveryMonthString = config.getProperty("displayEveryMonth").trim();
-            String[] values = new String[] {"True", "true", "False", "false"};
+            String[] values = new String[]{"True", "true", "False", "false"};
             if (Arrays.asList(values).contains(displayEveryMonthString)) {
                 result = Boolean.parseBoolean(displayEveryMonthString);
             } else {
@@ -161,197 +83,55 @@ public class Config {
     }
 
     public static int trainingHubMinimumTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("trainingHubMinimumTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for trainingHubMinimumTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for trainingHubMinimumTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("trainingHubMinimumTrainees");
     }
 
     public static int trainingHubMaximumTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("trainingHubMaximumTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for trainingHubMaximumTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for trainingHubMaximumTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("trainingHubMaximumTrainees");
     }
 
     public static int trainingHubConsecutiveMonthsOfInadequateTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("trainingHubConsecutiveMonthsOfInadequateTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for trainingHubConsecutiveMonthsOfInadequateTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for trainingHubConsecutiveMonthsOfInadequateTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("trainingHubConsecutiveMonthsOfInadequateTrainees");
     }
 
     public static int trainingHubsPerMonth() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("trainingHubsPerMonth"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for trainingHubsPerMonth in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for trainingHubsPerMonth in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("trainingHubsPerMonth");
     }
 
     public static int bootcampMinimumTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("bootcampMinimumTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for bootcampMinimumTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for bootcampMinimumTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("bootcampMinimumTrainees");
     }
 
     public static int bootcampMaximumTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("bootcampMaximumTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for bootcampMaximumTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for bootcampMaximumTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("bootcampMaximumTrainees");
     }
 
     public static int bootcampConsecutiveMonthsOfInadequateTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("bootcampConsecutiveMonthsOfInadequateTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for bootcampConsecutiveMonthsOfInadequateTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for bootcampConsecutiveMonthsOfInadequateTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("bootcampConsecutiveMonthsOfInadequateTrainees");
     }
 
     public static int bootcampTotalCreations() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("bootcampTotalCreations"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for bootcampTotalCreations in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for bootcampTotalCreations in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("bootcampTotalCreations");
     }
 
     public static int techCentreMinimumTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("techCentreMinimumTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for techCentreMinimumTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for techCentreMinimumTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("techCentreMinimumTrainees");
     }
 
     public static int techCentreMaximumTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("techCentreMaximumTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for techCentreMaximumTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for techCentreMaximumTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("techCentreMaximumTrainees");
+
     }
 
     public static int techCentresConsecutiveMonthsOfInadequateTrainees() {
-        int result = 0;
-        try {
-            result = Integer.parseInt(config.getProperty("techCentresConsecutiveMonthsOfInadequateTrainees"));
-            if (result < 0) {
-                throw new Exception();
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Incorrect format for the value given for techCentresConsecutiveMonthsOfInadequateTrainees in the config file.");
-            System.exit(exitCode);
-        } catch (Exception e) {
-            System.err.println("The value given for techCentresConsecutiveMonthsOfInadequateTrainees in the config file is less than 0.");
-            System.exit(exitCode);
-        }
-        return result;
+        return negativeNumErrorChecker("techCentresConsecutiveMonthsOfInadequateTrainees");
     }
 
-    public static int intNotNegativeChecker(String methodName) {
+    private static int negativeNumErrorChecker(String methodName) {
         int result = 0;
         try {
             result = Integer.parseInt(config.getProperty(methodName));
-            if (result < 0) {
+            if (intIsNegative(result)) {
                 throw new Exception();
             }
         } catch (NumberFormatException e) {
@@ -362,5 +142,30 @@ public class Config {
             System.exit(exitCode);
         }
         return result;
+    }
+
+    private static int zeroOrLowerNumErrorChecker(String methodName) {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty(methodName));
+            if (intIsZeroOrLower(result)) {
+                throw new Exception();
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for " + methodName + " in the config file.");
+            System.exit(exitCode);
+        } catch (Exception e) {
+            System.err.println("The value given for " + methodName + " in the config file is less than 0.");
+            System.exit(exitCode);
+        }
+        return result;
+    }
+
+    private static boolean intIsNegative(int number) {
+        return number < 0;
+    }
+
+    private static boolean intIsZeroOrLower(int number) {
+        return number <= 0;
     }
 }
