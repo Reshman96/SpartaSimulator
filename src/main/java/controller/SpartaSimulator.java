@@ -1,73 +1,56 @@
 package controller;
 
+import model.Centre;
+import model.CentreManager;
+import model.Trainee;
+import view.InputHandler;
+import view.OutputManager;
+
+import java.util.ArrayList;
+
 public class SpartaSimulator {
-    //private MonthlyIncrementor monthlyIncrementor = new MonthlyIncrementor();
-    //private CentreManager centreManager = new CentreManager();
+    private MonthlyIncrementer monthlyIncrementor;
+    private CentreManager centreManager = new CentreManager();
 
-    private int months;
-    private int numOfOpenCentres;
-    private int numOfFullCentres;
-    private int numOfTraineesTraining;
-    private int numOfTraineesWaiting;
+    private int months ;
+    private boolean displayEveryMonth;
+    private int[] openCenters;
+    private int[] fullCenters;
+    private int[] closedCenter;
+    private int[] traineesTraining;
+    //change from integer to trainee
+    private int[] waitingList;
 
-    public SpartaSimulator(int months, int numOfOpenCentres, int numOfFullCentres, int numOfTraineesTraining, int numOfTraineesWaiting) {
-        this.months = months;
-        this.numOfOpenCentres = numOfOpenCentres;
-        this.numOfFullCentres = numOfFullCentres;
-        this.numOfTraineesTraining = numOfTraineesTraining;
-        this.numOfTraineesWaiting = numOfTraineesWaiting;
+    public SpartaSimulator() {
+        this.months = InputHandler.getMonthsOfSimulation();
+        this.displayEveryMonth = InputHandler.getDisplayEveryMonth();
     }
 
-    public SpartaSimulator(int months) {
-        this.months = months;
-        this.numOfOpenCentres = 0;
-        this.numOfFullCentres = 0;
-        this.numOfTraineesTraining = 0;
-        this.numOfTraineesWaiting = 0;
+    public void simulator(){
+        for (int i = 0; i < months; i++) {
+            MonthlyIncrementer.incrementMonth(i);
+
+            if (displayEveryMonth) {
+                getInformation();
+                OutputManager.outputData(i+1, fullCenters, openCenters, closedCenter, traineesTraining,  waitingList);
+            }
+        }
+
+        //final results
+        if(!displayEveryMonth) {
+            getInformation();
+            OutputManager.outputData(months, fullCenters, openCenters, closedCenter, traineesTraining, waitingList);
+        }
+
     }
-
-    public int getMonths() {
-        return months;
-    }
-
-    public void setMonths(int months) {
-        this.months = months;
-    }
-
-    public int getNumOfOpenCentres() {
-        return numOfOpenCentres;
-    }
-
-    public void setNumOfOpenCentres(int numOfOpenCentres) {
-        this.numOfOpenCentres = numOfOpenCentres;
-    }
-
-    public int getNumOfFullCentres() {
-
-        return numOfFullCentres;
-    }
-
-    public void setNumOfFullCentres(int numOfFullCentres) {
-        this.numOfFullCentres = numOfFullCentres;
-    }
-
-    public int getNumOfTraineesTraining() {
-        return numOfTraineesTraining;
-    }
-
-    public void setNumOfTraineesTraining(int numOfTraineesTraining) {
-        this.numOfTraineesTraining = numOfTraineesTraining;
-    }
-
-    public int getNumOfTraineesWaiting() {
-        return numOfTraineesWaiting;
-    }
-
-    public void setNumOfTraineesWaiting(int numOfTraineesWaiting) {
-        this.numOfTraineesWaiting = numOfTraineesWaiting;
-    }
-
-    public void incrementMonth(){
-
+    private void getInformation(){
+        //change this with getter from model
+        this.openCenters = new int[] {1,2,3,4,5,6,7};
+        this.fullCenters = new int[] {1,2,3,4,5,6,7};
+        this.closedCenter = new int[] {1,2,3,4,5,6,7};
+        this.traineesTraining = new int[] {1,2,3,4,5};
+        this.traineesTraining = new int[] {1,2,3,4,5};
+        this.waitingList = new int[] {1,2,3,4,5};
+        ;
     }
 }

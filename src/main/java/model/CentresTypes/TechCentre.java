@@ -23,4 +23,6 @@ public class TechCentre extends CentreType{
     public CourseType getCourseType() {
         return COURSETYPE;
     }
+
+    public int getCourseTypeIndex(){ return COURSETYPE.compareTo(CourseType.JAVA) + 2;}
 }
