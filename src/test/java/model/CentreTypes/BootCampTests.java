@@ -2,6 +2,8 @@ package model.CentreTypes;
 
 import model.CentresTypes.Bootcamp;
 import model.Trainee;
+import model.CentresTypes.TechCentre;
+
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;

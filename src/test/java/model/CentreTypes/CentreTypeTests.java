@@ -50,6 +50,7 @@ public class CentreTypeTests {
         Assertions.assertEquals(24, bootCamp.getNumberOfTrainees());
     }
 
+
     @Test
     @DisplayName("Test isFull for false")
     void testIsFullForFalse() {
@@ -69,4 +70,5 @@ public class CentreTypeTests {
         trainingHub.setTraineeList(newList);
         assertTrue(trainingHub.isFull());
     }
+
 }

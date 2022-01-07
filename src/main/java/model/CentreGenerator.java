@@ -9,8 +9,6 @@ import static model.RandomNumberGenerator.getRandomInt;
 public class CentreGenerator {
 
         public static void getTypeOfCentre(int randomChoice) {
-            CourseType[] courseTypes = CourseType.values();
-            final CourseType COURSE = courseTypes[getRandomInt(0, courseTypes.length - 1)];
             switch(randomChoice) {
                 case 1:
                    CentreManager.addCentre(new TrainingHub());
