@@ -17,7 +17,7 @@ public class CentreManager {
     private static int[] fullTrainees = {0,0,0,0,0};
     private static int traineesCurrentlyTraining;
 
-    public ArrayList<CentreType> getAvailableCentres() {
+    public static ArrayList<CentreType> getAvailableCentres() {
         return availableCentres;
     }
 

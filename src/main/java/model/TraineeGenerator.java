@@ -3,6 +3,8 @@ package model;
 import view.InputHandler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import static model.RandomNumberGenerator.getRandomInt;
 
@@ -30,5 +32,36 @@ public class TraineeGenerator {
             }
             return traineeArrayList;
         }
+    }
+
+    public static ArrayList<Trainee> getTraineesFromArray(int[] traineeTypeArray){
+        int traineeSum = Arrays.stream(traineeTypeArray).sum();
+        ArrayList<Trainee> traineeArrayList = new ArrayList<>(traineeSum);
+
+        for (int i = 0; i < traineeTypeArray[0]; i++) {
+            traineeArrayList.add(new Trainee(CourseType.JAVA));
+        }
+        for (int i = 0; i < traineeTypeArray[1]; i++) {
+            traineeArrayList.add(new Trainee(CourseType.CSHARP));
+        }
+        for (int i = 0; i < traineeTypeArray[2]; i++) {
+            traineeArrayList.add(new Trainee(CourseType.DATA));
+        }
+        for (int i = 0; i < traineeTypeArray[3]; i++) {
+            traineeArrayList.add(new Trainee(CourseType.DEVOPS));
+        }
+        for (int i = 0; i < traineeTypeArray[4]; i++) {
+            traineeArrayList.add(new Trainee(CourseType.BUSINESS));
+        }
+
+        Collections.shuffle(traineeArrayList);
+
+        return traineeArrayList;
+    }
+
+    public static ArrayList<Trainee> getSingleTrainee(CourseType courseType){
+        ArrayList<Trainee> traineeArrayList = new ArrayList<>(1);
+        traineeArrayList.add(new Trainee(courseType));
+        return traineeArrayList;
     }
 }
