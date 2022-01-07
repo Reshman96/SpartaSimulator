@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import model.CentresTypes.CentreType;
+import view.InputHandler;
 import java.util.ArrayList;
 
 public class MonthlyIncrementer {
@@ -29,7 +30,11 @@ public class MonthlyIncrementer {
     private static void setCentreMonthlyCapacity() {
         // pass through array list of available centres
         for (CentreType centre: CentreManager.getAvailableCentres()) {
-            centre.setMonthlyCapacity(RandomNumberGenerator.getRandomInt(1,50)); //change 50 to monthly capacity variable
+
+            centre.setMonthlyCapacity(RandomNumberGenerator.getRandomInt(InputHandler.getTraineeLowerBound(),InputHandler.getTraineeUpperBound()));
+
+            
+
         }
     }
 
