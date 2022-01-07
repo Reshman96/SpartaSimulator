@@ -28,7 +28,7 @@ public class SpartaSimulator {
 
     public void simulator(){
         for (int i = 0; i < months; i++) {
-            MonthlyIncrementer.incrementMonths(i);
+            MonthlyIncrementer.incrementMonth(i);
 
             if (displayEveryMonth) {
                 getInformation();
