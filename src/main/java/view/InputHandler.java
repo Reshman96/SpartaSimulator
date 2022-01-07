@@ -9,6 +9,8 @@ public class InputHandler {
     private static boolean displayEveryMonth;
     private static int trainingHubMinimumTrainees;
     private static int trainingHubMaximumTrainees;
+    private static int centreMonthlyIntakeLowerBound;
+    private static int centreMonthlyIntakeUpperBound;
     private static int trainingHubConsecutiveMonthsOfInadequateTrainees;
     private static int trainingHubsPerMonth;
     private static int bootcampMinimumTrainees;
@@ -41,6 +43,14 @@ public class InputHandler {
 
     public static boolean getDisplayEveryMonth() {
         return displayEveryMonth;
+    }
+
+    public static int getCentreMonthlyIntakeLowerBound() {
+        return centreMonthlyIntakeLowerBound;
+    }
+
+    public static int getCentreMonthlyIntakeUpperBound() {
+        return centreMonthlyIntakeUpperBound;
     }
 
     public static int getTrainingHubMinimumTrainees() {
@@ -94,6 +104,8 @@ public class InputHandler {
         monthsOfSimulation = Config.monthsOfSimulation();
         existingCentres = Config.existingCentres();
         displayEveryMonth = Config.displayEveryMonth();
+        centreMonthlyIntakeLowerBound = Config.centreMonthlyIntakeLowerBound();
+        centreMonthlyIntakeUpperBound = Config.centreMonthlyIntakeUpperBound();
         trainingHubMinimumTrainees = Config.trainingHubMinimumTrainees();
         trainingHubMaximumTrainees = Config.trainingHubMaximumTrainees();
         trainingHubConsecutiveMonthsOfInadequateTrainees = Config.trainingHubConsecutiveMonthsOfInadequateTrainees();

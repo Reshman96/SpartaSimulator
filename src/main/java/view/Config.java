@@ -76,6 +76,26 @@ public class Config {
         return result;
     }
 
+    public static int centreMonthlyIntakeLowerBound() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("centreMonthlyIntakeLowerBound"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for centreMonthlyIntakeLowerBound in the config file.");
+        }
+        return result;
+    }
+
+    public static int centreMonthlyIntakeUpperBound() {
+        int result = 0;
+        try {
+            result = Integer.parseInt(config.getProperty("centreMonthlyIntakeUpperBound"));
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect format for the value given for centreMonthlyIntakeUpperBound in the config file.");
+        }
+        return result;
+    }
+
     public static boolean displayEveryMonth() {
         boolean result = false;
         try {
