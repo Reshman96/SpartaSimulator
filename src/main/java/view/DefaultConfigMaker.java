@@ -15,6 +15,8 @@ public class DefaultConfigMaker {
             properties.setProperty("monthsOfSimulation", "24");
             properties.setProperty("existingCentres", "0");
             properties.setProperty("displayEveryMonth", "false");
+            properties.setProperty("centreMonthlyIntakeLowerBound", "1");
+            properties.setProperty("centreMonthlyIntakeUpperBound", "50");
 
             properties.setProperty("trainingHubMinimumTrainees", "25");
             properties.setProperty("trainingHubMaximumTrainees", "100");
