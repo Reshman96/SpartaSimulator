@@ -15,7 +15,7 @@ public class DefaultConfigMaker {
         }
     }
 
-    public static void createDefaultConfig() throws IOException {
+    public static void createDefaultConfig() {
         try {
             setIndividualProperty("traineeLowerBound", "50", "Default Values");
             setIndividualProperty("traineeUpperBound", "100");
