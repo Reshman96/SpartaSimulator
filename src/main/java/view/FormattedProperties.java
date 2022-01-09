@@ -13,36 +13,9 @@ public class FormattedProperties extends Properties {
         super();
     }
 
-    // Everything below this line is identical to methods within the java.util.Properties class,
-    // except for 3 lines pertaining to printing the date-time stamp and line spacing.
-
-    @Override
-    public void store(Writer writer, String comments) throws IOException {
-        store0((writer instanceof BufferedWriter)?(BufferedWriter)writer : new BufferedWriter(writer), comments, false);
-    }
-
-    private void store0(BufferedWriter bw, String comments, boolean escUnicode) throws IOException {
-        if (comments != null) {
-            writeComments(bw, comments);
-        }
-//        bw.write("#" + new Date().toString());        COMMENTED OUT CODE
-//        bw.newLine();                                 COMMENTED OUT CODE
-        synchronized (this) {
-            for (Map.Entry<Object, Object> e : entrySet()) {
-                String key = (String)e.getKey();
-                String val = (String)e.getValue();
-                key = saveConvert(key, true, escUnicode);
-                /* No need to escape embedded and trailing spaces for value, hence
-                 * pass false to flag.
-                 */
-                val = saveConvert(val, false, escUnicode);
-                bw.write(key + "=" + val);
-                bw.newLine();
-            }
-        }
-        bw.newLine();                               // ADDED CODE
-        bw.flush();
-    }
+    /* Everything below this block of comments is identical to methods within the java.util.Properties class,
+       except for 5 lines pertaining to printing the date-time stamp and line spacing.
+       Additionally, an endOfBlock boolean parameter is passed through store and store0 methods. */
 
     private static void writeComments(BufferedWriter bw, String comments)
             throws IOException {
@@ -80,6 +53,35 @@ public class FormattedProperties extends Properties {
         bw.newLine();
     }
 
+    public void store(Writer writer, String comments, boolean endOfBlock) throws IOException {
+        store0((writer instanceof BufferedWriter) ? (BufferedWriter) writer : new BufferedWriter(writer), comments, false, endOfBlock);
+    }
+
+    private void store0(BufferedWriter bw, String comments, boolean escUnicode, boolean endOfBlock) throws IOException {
+        if (comments != null) {
+            writeComments(bw, comments);
+        }
+//        bw.write("#" + new Date().toString());        // COMMENTED OUT CODE
+//        bw.newLine();                                 // COMMENTED OUT CODE
+        synchronized (this) {
+            for (Map.Entry<Object, Object> e : entrySet()) {
+                String key = (String) e.getKey();
+                String val = (String) e.getValue();
+                key = saveConvert(key, true, escUnicode);
+                /* No need to escape embedded and trailing spaces for value, hence
+                 * pass false to flag.
+                 */
+                val = saveConvert(val, false, escUnicode);
+                bw.write(key + "=" + val);
+                bw.newLine();
+            }
+        }
+        if (endOfBlock) {                               // ADDED CODE
+            bw.newLine();                               // ADDED CODE
+        }                                               // ADDED CODE
+        bw.flush();
+    }
+
     private String saveConvert(String theString,
                                boolean escapeSpace,
                                boolean escapeUnicode) {
@@ -90,40 +92,50 @@ public class FormattedProperties extends Properties {
         }
         StringBuilder outBuffer = new StringBuilder(bufLen);
         HexFormat hex = HexFormat.of().withUpperCase();
-        for(int x=0; x<len; x++) {
+        for (int x = 0; x < len; x++) {
             char aChar = theString.charAt(x);
             // Handle common case first, selecting largest block that
             // avoids the specials below
             if ((aChar > 61) && (aChar < 127)) {
                 if (aChar == '\\') {
-                    outBuffer.append('\\'); outBuffer.append('\\');
+                    outBuffer.append('\\');
+                    outBuffer.append('\\');
                     continue;
                 }
                 outBuffer.append(aChar);
                 continue;
             }
-            switch(aChar) {
+            switch (aChar) {
                 case ' ':
                     if (x == 0 || escapeSpace)
                         outBuffer.append('\\');
                     outBuffer.append(' ');
                     break;
-                case '\t':outBuffer.append('\\'); outBuffer.append('t');
+                case '\t':
+                    outBuffer.append('\\');
+                    outBuffer.append('t');
                     break;
-                case '\n':outBuffer.append('\\'); outBuffer.append('n');
+                case '\n':
+                    outBuffer.append('\\');
+                    outBuffer.append('n');
                     break;
-                case '\r':outBuffer.append('\\'); outBuffer.append('r');
+                case '\r':
+                    outBuffer.append('\\');
+                    outBuffer.append('r');
                     break;
-                case '\f':outBuffer.append('\\'); outBuffer.append('f');
+                case '\f':
+                    outBuffer.append('\\');
+                    outBuffer.append('f');
                     break;
                 case '=': // Fall through
                 case ':': // Fall through
                 case '#': // Fall through
                 case '!':
-                    outBuffer.append('\\'); outBuffer.append(aChar);
+                    outBuffer.append('\\');
+                    outBuffer.append(aChar);
                     break;
                 default:
-                    if (((aChar < 0x0020) || (aChar > 0x007e)) & escapeUnicode ) {
+                    if (((aChar < 0x0020) || (aChar > 0x007e)) & escapeUnicode) {
                         outBuffer.append("\\u");
                         outBuffer.append(hex.toHexDigits(aChar));
                     } else {
