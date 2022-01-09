@@ -13,11 +13,7 @@ public class Config {
 
     static {
         if (!new File(fileLocation).exists()) {
-            try {
-                DefaultConfigMaker.createDefaultConfig();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            DefaultConfigMaker.createDefaultConfig();
         }
         config = new FormattedProperties();
         try {
