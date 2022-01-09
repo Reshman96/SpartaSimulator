@@ -4,44 +4,41 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class DefaultConfigMaker {
+    private static final String fileLocation = "src/main/resources/config.properties";
 
     public static void createDefaultConfig() throws IOException {
-        FormattedProperties properties;
-        FileWriter fileWriter = new FileWriter("src/main/resources/config.properties");
+        FileWriter fileWriter = new FileWriter(fileLocation);
         try {
-            properties = new FormattedProperties();
-            properties.setProperty("traineeLowerBound", "50");
-            properties.setProperty("traineeUpperBound", "100");
-            properties.setProperty("centresPerMonth", "0.5");
-            properties.setProperty("monthsOfSimulation", "24");
-            properties.setProperty("existingCentres", "0");
-            properties.setProperty("displayEveryMonth", "false");
-            properties.setProperty("centreMonthlyIntakeLowerBound", "1");
-            properties.setProperty("centreMonthlyIntakeUpperBound", "50");
-            properties.store(fileWriter, "Default Values");
+            setIndividualProperty("traineeLowerBound", "50", fileWriter, "Default Values", false);
+            setIndividualProperty("traineeUpperBound", "100", fileWriter, null, false);
+            setIndividualProperty("centresPerMonth", "0.5", fileWriter, null, false);
+            setIndividualProperty("monthsOfSimulation", "24", fileWriter, null, false);
+            setIndividualProperty("existingCentres", "0", fileWriter, null, false);
+            setIndividualProperty("displayEveryMonth", "false", fileWriter, null, false);
+            setIndividualProperty("centreMonthlyIntakeLowerBound", "1", fileWriter, null, false);
+            setIndividualProperty("centreMonthlyIntakeUpperBound", "50", fileWriter, null, true);
 
-            properties = new FormattedProperties();
-            properties.setProperty("trainingHubMinimumTrainees", "25");
-            properties.setProperty("trainingHubMaximumTrainees", "100");
-            properties.setProperty("trainingHubConsecutiveMonthsOfInadequateTrainees", "1");
-            properties.setProperty("trainingHubsPerMonth", "3");
-            properties.store(fileWriter, "Training Hub");
+            setIndividualProperty("trainingHubMinimumTrainees", "25", fileWriter, "Training Hub", false);
+            setIndividualProperty("trainingHubMaximumTrainees", "100", fileWriter, null, false);
+            setIndividualProperty("trainingHubConsecutiveMonthsOfInadequateTrainees", "1", fileWriter, null, false);
+            setIndividualProperty("trainingHubsPerMonth", "3", fileWriter, null, true);
 
-            properties = new FormattedProperties();
-            properties.setProperty("bootcampMinimumTrainees", "25");
-            properties.setProperty("bootcampMaximumTrainees", "500");
-            properties.setProperty("bootcampConsecutiveMonthsOfInadequateTrainees", "3");
-            properties.setProperty("bootcampTotalCreations", "2");
-            properties.store(fileWriter, "Bootcamps");
+            setIndividualProperty("bootcampMinimumTrainees", "25", fileWriter, "Bootcamp", false);
+            setIndividualProperty("bootcampMaximumTrainees", "500", fileWriter, null, false);
+            setIndividualProperty("bootcampConsecutiveMonthsOfInadequateTrainees", "3", fileWriter, null, false);
+            setIndividualProperty("bootcampTotalCreations", "2", fileWriter, null, true);
 
-            properties = new FormattedProperties();
-            properties.setProperty("techCentreMinimumTrainees", "25");
-            properties.setProperty("techCentreMaximumTrainees", "200");
-            properties.setProperty("techCentresConsecutiveMonthsOfInadequateTrainees", "1");
-            properties.store(fileWriter, "Tech Centres");
-
+            setIndividualProperty("techCentreMinimumTrainees", "25", fileWriter, "Tech Centre", false);
+            setIndividualProperty("techCentreMaximumTrainees", "200", fileWriter, null, false);
+            setIndividualProperty("techCentresConsecutiveMonthsOfInadequateTrainees", "1", fileWriter, null, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void setIndividualProperty(String key, String value, FileWriter fileWriter, String comments, boolean endOfBlock) throws IOException {
+        FormattedProperties properties = new FormattedProperties();
+        properties.setProperty(key, value);
+        properties.store(fileWriter, comments, endOfBlock);
     }
 }
