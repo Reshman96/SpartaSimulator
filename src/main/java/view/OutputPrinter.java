@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public final class OutputPrinter {
     private static void printMonthNumber(int currentMonth) {
-        System.out.println("Total number of months: " + currentMonth);
+        System.out.println("Month Number: " + currentMonth);
     }
     private static void printFullCentres(int[] fullCentres) {
         System.out.println("Number of full centres: " + Arrays.stream(fullCentres).sum());
@@ -29,7 +29,7 @@ public final class OutputPrinter {
     }
 
     private static void printClosedCentres(int[] closedCentres){
-        System.out.println("Number of open centres: " + Arrays.stream(closedCentres).sum());
+        System.out.println("Number of closed centres: " + Arrays.stream(closedCentres).sum());
         System.out.println("Training hubs: " + closedCentres[0]);
         System.out.println("Bootcamps: " + closedCentres[1]);
         System.out.println("Java Tech Centres: " + closedCentres[2]);

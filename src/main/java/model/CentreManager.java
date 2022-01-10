@@ -6,7 +6,6 @@ import model.CentresTypes.TechCentre;
 import model.CentresTypes.TrainingHub;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class CentreManager {
@@ -112,7 +111,6 @@ public class CentreManager {
         }
         return sumArray;
     }
-
 
     public static void resetCentreArray(){
         availableCentres.clear();

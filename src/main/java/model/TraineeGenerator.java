@@ -23,7 +23,6 @@ public class TraineeGenerator {
                 traineeArrayList.add(new Trainee());
             }
             return traineeArrayList;
-
         } else {
             int defaultRandomNumber = getRandomInt(50, 100);
             ArrayList<Trainee> traineeArrayList = new ArrayList<>(defaultRandomNumber);
