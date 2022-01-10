@@ -14,7 +14,6 @@ public class BootCampTests {
 
     Bootcamp bootCamp;
 
-
     @BeforeEach
     void setup(){
         bootCamp = new Bootcamp();

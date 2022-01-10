@@ -1,34 +1,31 @@
 package model.CentresTypes;
 
+import view.InputHandler;
+
 public class Bootcamp extends CentreType{
 
     private int failCount;
-    private int failsAllowed;
-
-    public Bootcamp(int failsAllowed) {
-        super();
-        failCount = 0;
-        this.failsAllowed = failsAllowed;
-    }
+    private final int FAILS_ALLOWED = InputHandler.getBootcampConsecutiveMonthsOfInadequateTrainees();
+    private final int BOOTCAMP_MINIMUM_ACCEPTABLE_LIMIT = InputHandler.getBootcampMinimumTrainees();
+    private final int BOOTCAMP_MAXIMUM_ACCEPTABLE_LIMIT = InputHandler.getBootcampMaximumTrainees();
 
     public Bootcamp(){
         super();
         failCount = 0;
-        this.failsAllowed = 2;
     }
 
     @Override
     public int getMaxSize() {
-        return 500;
+        return BOOTCAMP_MAXIMUM_ACCEPTABLE_LIMIT;
     }
 
     @Override
     public boolean attemptShutCentreDown() {
-        if (getNumberOfTrainees() >= 25) {
+        if (getNumberOfTrainees() >= BOOTCAMP_MINIMUM_ACCEPTABLE_LIMIT) {
             failCount = 0;
             return false;
         } else {
-            if(!(failCount < failsAllowed)) {
+            if(!(failCount < FAILS_ALLOWED)) {
                 return true;
             } else {
                 failCount++;

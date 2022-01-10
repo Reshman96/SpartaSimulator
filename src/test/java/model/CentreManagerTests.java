@@ -22,7 +22,6 @@ public class CentreManagerTests {
         }
     }
 
-
     @Test
     @DisplayName("Adding one of each type of training centre")
     void addingOneOfEachTypeOfTrainingCentre() {
