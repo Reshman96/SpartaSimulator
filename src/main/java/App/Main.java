@@ -1,3 +1,5 @@
+package App;
+
 import controller.SpartaSimulator;
 import logging.MyLogger;
 import view.InputHandler;
@@ -10,11 +12,12 @@ public class Main {
         MyLogger.createLogger();
 
         MyLogger.writeLog(Level.INFO, "Program Started");
-
         MyLogger.writeLog(Level.INFO, "Setting starting parameters");
+
         InputHandler.setStartingParameters();
 
         MyLogger.writeLog(Level.INFO, "Running simulation");
+
         SpartaSimulator spartaSimulator = new SpartaSimulator();
         spartaSimulator.simulator();
     }
