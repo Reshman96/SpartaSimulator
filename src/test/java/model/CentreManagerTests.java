@@ -5,8 +5,14 @@ import model.CentresTypes.CentreType;
 import model.CentresTypes.TechCentre;
 import model.CentresTypes.TrainingHub;
 import org.junit.jupiter.api.*;
+import view.InputHandler;
 
 public class CentreManagerTests {
+
+    @BeforeAll
+    static void setupAll() {
+        InputHandler.setStartingParameters();
+    }
 
     @AfterEach
     void teardown(){CentreManager.resetCentreArray();}
@@ -54,6 +60,6 @@ public class CentreManagerTests {
         CentreManager.addCentre(bootcamp);
         CentreManager.addCentre(techCentre);
         CentreManager.attemptCloseCentres();
-        Assertions.assertArrayEquals(new int[]{1, 0, 0,0,0,1,0}, CentreManager.getClosedCentres());
+        Assertions.assertArrayEquals(new int[]{1,0,0,0,0,1,0}, CentreManager.getClosedCentres());
     }
 }

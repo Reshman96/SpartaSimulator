@@ -1,13 +1,16 @@
 package model.CentreTypes;
 
 import model.CentresTypes.TrainingHub;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import view.InputHandler;
 
 public class TrainingHubTests {
+
+    @BeforeAll
+    static void setupAll() {
+        InputHandler.setStartingParameters();
+    }
+
     @Nested
     @DisplayName("Training Hub Tests")
     class CentreTests {
@@ -22,7 +25,7 @@ public class TrainingHubTests {
         @DisplayName("Return max size")
         void returnMaxSize() {
             TrainingHub trainingHub = new TrainingHub();
-            Assertions.assertEquals(100, trainingHub.getMaxSize());
+            Assertions.assertEquals(InputHandler.getTrainingHubMaximumTrainees(), trainingHub.getMaxSize());
         }
 
         @Test

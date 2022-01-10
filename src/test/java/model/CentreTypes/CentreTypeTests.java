@@ -6,10 +6,8 @@ import model.CentresTypes.TechCentre;
 import model.CentresTypes.TrainingHub;
 import model.CourseType;
 import model.Trainee;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import view.InputHandler;
 
 import java.util.ArrayList;
 
@@ -19,6 +17,11 @@ public class CentreTypeTests {
 
     ArrayList<Trainee> dummyList = new ArrayList<>();
     Bootcamp bootCamp = new Bootcamp();
+
+    @BeforeAll
+    static void setupAll() {
+        InputHandler.setStartingParameters();
+    }
 
     @BeforeEach
     void setup() {
@@ -64,7 +67,7 @@ public class CentreTypeTests {
         TrainingHub trainingHub = new TrainingHub();
 
         ArrayList<Trainee> newList = new ArrayList<>();
-        for(int n = 0; n < 100; n++) {
+        for(int n = 0; n < InputHandler.getTrainingHubMaximumTrainees(); n++) {
             newList.add(new Trainee());
         }
         trainingHub.setTraineeList(newList);

@@ -25,10 +25,10 @@ public class Bootcamp extends CentreType{
             failCount = 0;
             return false;
         } else {
+            failCount++;
             if(!(failCount < FAILS_ALLOWED)) {
                 return true;
             } else {
-                failCount++;
                 return false;
             }
         }
