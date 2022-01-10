@@ -1,16 +1,22 @@
 package view;
 
+import App.Main;
+
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class DefaultConfigMaker {
-    private static final String fileLocation = "src/main/resources/config.properties";
+    private static final String fileLocation = "../src/main/resources/config.properties";
     private static FileWriter fileWriter = null;
 
     static {
         try {
-            fileWriter = new FileWriter(fileLocation);
-        } catch (IOException e) {
+            File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            String inputFilePath = jarFile.getParent() + File.separator + fileLocation;
+            fileWriter = new FileWriter(inputFilePath);
+        } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
     }

@@ -1,17 +1,32 @@
 package view;
 
+import App.Main;
+
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 
 public class FileOutputManager {
 
     private static BufferedWriter bufferedWriter;
+    private static final String fileLocation = "../src/main/resources/sparta_simulation_csv.csv";
+    private static String csvFilePath;
+
+    static {
+        try {
+            File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            csvFilePath = jarFile.getParent() + File.separator + fileLocation;
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void openCSVFile() {
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/sparta_simulation_csv.csv", true));
+            bufferedWriter = new BufferedWriter(new FileWriter(csvFilePath, true));
             bufferedWriter.write(LocalDateTime.now() + " #\n");
         } catch (IOException e) {
             e.printStackTrace();
