@@ -5,19 +5,19 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Properties;
 
 public class Config {
-    private static final Properties config;
+    private static final FormattedProperties config;
     private static final int exitCode = 0;
+    private static final String fileLocation = "src/main/resources/config.properties";
 
     static {
-        if (!new File("src/main/resources/config.properties").exists()) {
+        if (!new File(fileLocation).exists()) {
             DefaultConfigMaker.createDefaultConfig();
         }
-        config = new Properties();
+        config = new FormattedProperties();
         try {
-            config.load(new BufferedReader(new FileReader("src/main/resources/config.properties")));
+            config.load(new BufferedReader(new FileReader(fileLocation)));
         } catch (IOException e) {
             System.err.println("Failed to load the config file properly.");
             System.exit(exitCode);
@@ -68,8 +68,8 @@ public class Config {
     public static boolean displayEveryMonth() {
         boolean result = false;
         try {
-            String displayEveryMonthString = config.getProperty("displayEveryMonth").trim();
-            String[] values = new String[]{"True", "true", "False", "false"};
+            String displayEveryMonthString = config.getProperty("displayEveryMonth").trim().toLowerCase();
+            String[] values = new String[]{"true", "false"};
             if (Arrays.asList(values).contains(displayEveryMonthString)) {
                 result = Boolean.parseBoolean(displayEveryMonthString);
             } else {
