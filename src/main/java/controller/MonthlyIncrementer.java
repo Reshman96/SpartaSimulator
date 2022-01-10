@@ -1,5 +1,4 @@
 package controller;
-
 import model.*;
 import model.CentresTypes.CentreType;
 import model.CentresTypes.TechCentre;
@@ -15,10 +14,8 @@ public class MonthlyIncrementer {
         }
         //set monthly capacity for all centres
         setCentreMonthlyCapacity();
-
         //add new trainees to waiting list
         TraineeManager.addRandomNumberOfTrainees();
-
         if (currentMonth > 1) {
             addTraineesToCentres(TraineeManager.getWaitingList());
         }
@@ -45,6 +42,7 @@ public class MonthlyIncrementer {
         Iterator<Trainee> it = trainees.iterator();
         int e = 0;
         while (it.hasNext()){
+
             Trainee trainee = it.next();
             boolean notPlaced = true;
             int count = 0;
