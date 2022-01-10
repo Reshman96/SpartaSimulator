@@ -5,6 +5,7 @@ import model.CentresTypes.TechCentre;
 import view.InputHandler;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 public class MonthlyIncrementer {
 
     public static void incrementMonth(int currentMonth) {
@@ -41,7 +42,7 @@ public class MonthlyIncrementer {
         Iterator<Trainee> it = trainees.iterator();
         int e = 0;
         while (it.hasNext()){
-            //System.out.println("length of trainees" + trainees.size()+ "loop: "+e++);
+
             Trainee trainee = it.next();
             boolean notPlaced = true;
             int count = 0;
