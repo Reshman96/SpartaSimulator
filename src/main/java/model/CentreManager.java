@@ -14,7 +14,7 @@ public class CentreManager {
     private static int[] fullCentres = {0,0,0,0,0,0,0};
     private static int[] closedCentres = {0,0,0,0,0,0,0};
     private static int[] fullTrainees = {0,0,0,0,0};
-    private static int traineesCurrentlyTraining;
+    private static int[] traineesCurrentlyTraining = {0,0,0,0,0};
 
     public static ArrayList<CentreType> getAvailableCentres() {
         return availableCentres;
@@ -30,7 +30,7 @@ public class CentreManager {
         return closedCentres;
     }
 
-    public static int getTraineesCurrentlyTraining() {
+    public static int[] getTraineesCurrentlyTraining() {
         return traineesCurrentlyTraining;
     }
 
