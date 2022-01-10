@@ -5,6 +5,7 @@ import model.CentresTypes.TrainingHub;
 import model.CourseType;
 import model.Trainee;
 import org.junit.jupiter.api.*;
+import view.InputHandler;
 
 import java.util.ArrayList;
 
@@ -13,6 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TechCentreTests {
 
     TechCentre techCentre;
+
+    @BeforeAll
+    static void setupAll() {
+        InputHandler.setStartingParameters();
+    }
 
     @BeforeEach
     void setup(){
@@ -29,7 +35,7 @@ public class TechCentreTests {
     @Test
     @DisplayName("Return max size")
     void returnMaxSize() {
-        Assertions.assertEquals(200, techCentre.getMaxSize());
+        Assertions.assertEquals(InputHandler.getTechCentreMaximumTrainees(), techCentre.getMaxSize());
     }
 
     @Test
@@ -47,7 +53,7 @@ public class TechCentreTests {
     @Test
     @DisplayName("Attempt high attendance shutdown")
     void attemptHighAttendanceShutdown() {
-        for(int i = 0; i < 25; i++) {
+        for(int i = 0; i < InputHandler.getTechCentreMinimumTrainees(); i++) {
             techCentre.addTrainee(new Trainee());
         }
 

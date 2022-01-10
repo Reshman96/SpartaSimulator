@@ -1,55 +1,53 @@
 package model;
 
-import model.CentresTypes.Bootcamp;
-import model.CentresTypes.TechCentre;
-import model.CentresTypes.TrainingHub;
 import org.junit.jupiter.api.*;
+
+import java.util.ArrayList;
 
 public class TraineeManagerTests {
 
-    private TraineeManager traineeManager = new TraineeManager();
-
-
-//    @BeforeEach
-//    static void setup(){
-//        TraineeManager = new TraineeManager();
-//    }
-
     @AfterEach
-    void teardown(){CentreManager.resetCentreArray();}
-
-    @Nested
-    @DisplayName("Testing Trainees in the Waiting list")
-    class testingTraineesInTheWaitingList {
-        /**
-         * This test focus on checking that the random number of trainees are generated
-         * is equal to the waiting list of trainees
-         */
-        @Test
-        @DisplayName("Test Random Number of Trainees generated added to the waiting list")
-        void testRandomNumberOfTraineesGeneratedAddedToTheWaitingList() {
-            traineeManager.addRandomNumberOfTrainees();
-            int trainRandomCreated = traineeManager.getTempListOfTraineesSize();
-            int waitingListSize = traineeManager.getWaitingTrainees();
-            //System.out.println(trainRandomCreated + " / " + waitingListSize);
-            Assertions.assertEquals(trainRandomCreated, waitingListSize);
-        }
-
-        /**
-         * This test should check if new trainees can be added to the existing waiting list
-         */
-        @Test
-        @DisplayName("Test new trainees can be added to the existing waiting list")
-        void testNewTraineesCanBeAddedToTheExistingWaitingList() {
-            traineeManager.addRandomNumberOfTrainees();
-            int sumOfTraineesInWaitingList;
-
-
-        }
-
-        /**
-         * This test should check if waiting list for removed is updated
-         */
+    void teardown(){
+        TraineeManager.resetWaitingList();
     }
 
+    @Test
+    @DisplayName("Test random number of trainees generated added to the waiting list")
+    void testRandomNumberOfTraineesGeneratedAddedToTheWaitingList() {
+        TraineeManager.addRandomNumberOfTrainees();
+        Assertions.assertEquals(TraineeManager.getTempListOfTraineesSize(), TraineeManager.getWaitingTrainees());
+    }
+
+    @Test
+    @DisplayName("Test new trainees can be added to the existing waiting list")
+    void testNewTraineesCanBeAddedToTheExistingWaitingList() {
+        TraineeManager.addRandomNumberOfTrainees();
+        int sumOfTraineesInWaitingList = TraineeManager.getTempListOfTraineesSize();
+        TraineeManager.addSingleTrainee(CourseType.BUSINESS);
+        sumOfTraineesInWaitingList += TraineeManager.getTempListOfTraineesSize();
+        Assertions.assertEquals(TraineeManager.getWaitingTrainees(), sumOfTraineesInWaitingList);
+    }
+
+    @Test
+    @DisplayName("Test removing a trainee updates the waiting list accordingly")
+    void testRemovingATraineeUpdatesTheWaitingListAccordingly() {
+        Trainee trainee1 = new Trainee(CourseType.JAVA);
+        Trainee trainee2 = new Trainee(CourseType.DATA);
+        Trainee trainee3 = new Trainee(CourseType.BUSINESS);
+        ArrayList<Trainee> groupTrainees = new ArrayList<>();
+        groupTrainees.add(trainee1);
+        groupTrainees.add(trainee2);
+        groupTrainees.add(trainee3);
+        TraineeManager.addTraineesFromArrayList(groupTrainees);
+        TraineeManager.removeTraineeFromWaitingList(trainee1);
+        Assertions.assertEquals(2, TraineeManager.getWaitingTrainees());
+    }
+
+    @Test
+    @DisplayName("Test that a single trainee is added to the waiting list")
+    void testThatASingleTraineeIsAddedToTheWaitingList() {
+        TraineeManager.addSingleTrainee(CourseType.JAVA);
+        Assertions.assertEquals(1, TraineeManager.getWaitingTrainees());
+    }
 }
+
