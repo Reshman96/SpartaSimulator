@@ -73,7 +73,6 @@ public class SpartaSimulator {
                     formattedTrainees[4] ++;
                     break;
             }
-
         }
         return formattedTrainees;
     }
