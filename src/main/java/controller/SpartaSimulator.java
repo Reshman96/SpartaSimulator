@@ -1,6 +1,6 @@
 package controller;
 
-import model.Centre;
+import logging.MyLogger;
 import model.CentreManager;
 import model.Trainee;
 import model.TraineeManager;
@@ -8,6 +8,7 @@ import view.InputHandler;
 import view.OutputManager;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class SpartaSimulator {
     private MonthlyIncrementer monthlyIncrementor;
@@ -29,6 +30,7 @@ public class SpartaSimulator {
 
     public void simulator(){
         for (int i = 0; i < months; i++) {
+            MyLogger.writeLog(Level.FINE, "Simulating month: " + i);
             MonthlyIncrementer.incrementMonth(i);
 
             if (displayEveryMonth) {
@@ -43,6 +45,7 @@ public class SpartaSimulator {
             OutputManager.outputData(months, fullCenters, openCenters, closedCenter, traineesTraining, waitingList);
         }
 
+        MyLogger.writeLog(Level.INFO, "Program Finished");
     }
     private void getInformation(){
         //change this with getter from model
