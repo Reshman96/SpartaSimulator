@@ -45,7 +45,6 @@ public class MonthlyIncrementer {
         Iterator<Trainee> it = trainees.iterator();
         int e = 0;
         while (it.hasNext()){
-            //System.out.println("length of trainees" + trainees.size()+ "loop: "+e++);
             Trainee trainee = it.next();
             boolean notPlaced = true;
             int count = 0;

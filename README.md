@@ -11,7 +11,7 @@ config file, and the outputs are saved to a file as well as printed to the comma
 
 ## Table of contents
 * [Installation](#Installation)
-* [Implemented Use algorithms](#Use)
+* [Use](#Use)
 * [Areas of potential extension](#Areas-of-potential-extension)
 * [Contributing](#Contributing)
 * [Authors and acknowledgment](#Authors-and-acknowledgment)
@@ -19,13 +19,15 @@ config file, and the outputs are saved to a file as well as printed to the comma
 
 ## Installation
 
-[comment]: <> (tbd)
+In order to install SpartaSimulator, download the code from GitHub, and have Java installed on your computer.
 
 ## Use
 
 In order to run the program, the user should first edit the variables found in the config file, found at 
-"src/main/resources/config.properties". Outputs will then be saved to "src/main/resources/sparta_simulation_csv.csv", 
-as well as displayed in the command window.
+"src/main/resources/config.properties". You can now run SpartaSimulator in an IDE, or type this command line instruction
+in the folder in which you've installed SpartaSimulator: *"java -jar SpartaSimulator-1.0-SNAPSHOT.jar"*. 
+
+Outputs will then be saved to "src/main/resources/sparta_simulation_csv.csv", as well as displayed in the command window.
 
 Note that if the config file is corrupted in any way, deleting it and then running the program should result in a fresh 
 config file being generated with default values.

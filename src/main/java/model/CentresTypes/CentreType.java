@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public abstract class CentreType {
     private ArrayList<Trainee> traineeList;
     private int monthlyCapacity;
-    private int maxSize;
+    //private int maxSize;
 
     public CentreType() {
         traineeList = new ArrayList<>();
         this.monthlyCapacity = 0;
-        this.maxSize = getMaxSize();
+        //this.maxSize = getMaxSize();
     }
 
     public int getNumberOfTrainees() {
@@ -63,7 +63,8 @@ public abstract class CentreType {
     }
 
     public boolean isFull(){
-        return maxSize == getNumberOfTrainees();
+        //return maxSize == getNumberOfTrainees();
+        return getMaxSize() == getNumberOfTrainees();
     }
 
     public abstract boolean attemptShutCentreDown();

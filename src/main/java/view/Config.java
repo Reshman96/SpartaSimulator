@@ -1,23 +1,32 @@
 package view;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import App.Main;
+
+import java.io.*;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 
 public class Config {
     private static final FormattedProperties config;
     private static final int exitCode = 0;
-    private static final String fileLocation = "src/main/resources/config.properties";
+    private static final String fileLocation = "../src/main/resources/config.properties";
+    private static String inputFilePath;
+    private static File jarFile;
+
 
     static {
-        if (!new File(fileLocation).exists()) {
+        try {
+            jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            inputFilePath = jarFile.getParent() + File.separator + fileLocation;
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        if (!new File(inputFilePath).exists()) {
             DefaultConfigMaker.createDefaultConfig();
         }
         config = new FormattedProperties();
         try {
-            config.load(new BufferedReader(new FileReader(fileLocation)));
+            config.load(new BufferedReader(new FileReader(inputFilePath)));
         } catch (IOException e) {
             System.err.println("Failed to load the config file properly.");
             System.exit(exitCode);

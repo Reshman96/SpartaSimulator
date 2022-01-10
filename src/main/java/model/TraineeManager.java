@@ -1,13 +1,11 @@
 package model;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class TraineeManager {
 
     private static ArrayList<Trainee> waitingList = new ArrayList<>();
-    private static ArrayList<Trainee> tempListOfTrainees = new ArrayList();
-    private int waitingTrainees;
+    private static ArrayList<Trainee> tempListOfTrainees = new ArrayList<>();
 
     public static ArrayList<Trainee> getWaitingList() {
         return waitingList;
@@ -29,8 +27,9 @@ public class TraineeManager {
         TraineeManager.tempListOfTrainees = tempListOfTrainees;
     }
 
-    public static void addTrainees(Trainee singleTrainee){
-        waitingList.add(singleTrainee);
+    public static void addTraineesFromArrayList(ArrayList<Trainee> trainees) {
+        setTempListOfTrainees(trainees);
+        waitingList.addAll(trainees);
     }
 
     public static void addRandomNumberOfTrainees(){
@@ -38,26 +37,16 @@ public class TraineeManager {
      waitingList.addAll(getTempListOfTrainees());
     }
 
-//    public static void addTraineesFromArray(int[] traineeTypeArray){
-//        tempListOfTrainees = TraineeGenerator.getTraineesFromArray(traineeTypeArray);
-//        waitingList.addAll(tempListOfTrainees);
-//    }
-
-    public static void addTraineesFromClosedCentre(ArrayList<Trainee> displacedTrainees) {
-        setTempListOfTrainees(displacedTrainees);
-        //tempListOfTrainees = displacedTrainees;
-        waitingList.addAll(getTempListOfTrainees());
-    }
-
     public static void addSingleTrainee(CourseType courseType) {
         setTempListOfTrainees(TraineeGenerator.getSingleTrainee(courseType));
-        //tempListOfTrainees = TraineeGenerator.getSingleTrainee(courseType);
         waitingList.addAll(getTempListOfTrainees());
     }
 
-    public static ArrayList<Trainee> removeTraineeFromWaitingList(Trainee toBeRemovedTrainee) {
+    public static void removeTraineeFromWaitingList(Trainee toBeRemovedTrainee) {
         waitingList.remove(toBeRemovedTrainee);
-        return waitingList;
     }
 
+    public static void resetWaitingList(){
+        waitingList.clear();
+    }
 }

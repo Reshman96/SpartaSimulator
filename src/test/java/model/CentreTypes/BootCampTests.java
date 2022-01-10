@@ -5,6 +5,7 @@ import model.Trainee;
 import model.CentresTypes.TechCentre;
 
 import org.junit.jupiter.api.*;
+import view.InputHandler;
 
 import java.util.ArrayList;
 
@@ -14,12 +15,16 @@ public class BootCampTests {
 
     Bootcamp bootCamp;
 
+    @BeforeAll
+    static void setupAll() {
+        InputHandler.setStartingParameters();
+    }
 
     @BeforeEach
     void setup(){
         bootCamp = new Bootcamp();
         ArrayList<Trainee> dummyList = new ArrayList<>();
-        for(int i = 0; i < 24; i++) {
+        for(int i = 0; i < InputHandler.getBootcampMinimumTrainees() - 1; i++) {
             dummyList.add(new Trainee());
         }
         bootCamp.setTraineeList(dummyList);
@@ -28,7 +33,7 @@ public class BootCampTests {
     @Test
     @DisplayName("Test that max size is 500")
     void testThatMaxSizeIs500() {
-        Assertions.assertEquals(500, bootCamp.getMaxSize());
+        Assertions.assertEquals(InputHandler.getBootcampMaximumTrainees(), bootCamp.getMaxSize());
     }
 
     @Test
@@ -39,7 +44,7 @@ public class BootCampTests {
     }
 
     @Test
-    @DisplayName("Attempt centre shutdown at low attendance third strike")
+    @DisplayName("Attempt centre shutdown at low attendance third strike (Default only)")
     void attemptCentreShutdownAtLowAttendanceThirdStrike() {
         bootCamp.attemptShutCentreDown();
         bootCamp.attemptShutCentreDown();
