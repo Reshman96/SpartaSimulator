@@ -3,7 +3,6 @@ package model.CentresTypes;
 import model.Trainee;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public abstract class CentreType {
     private ArrayList<Trainee> traineeList;
@@ -53,6 +52,10 @@ public abstract class CentreType {
 
     public int getMonthlyCapacity() {
         return monthlyCapacity;
+    }
+
+    public void addTrainee(Trainee trainee) {
+        traineeList.add(trainee);
     }
 
     public void setMonthlyCapacity(int monthlyCapacity) {
