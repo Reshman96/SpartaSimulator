@@ -29,13 +29,13 @@ public class SpartaSimulator {
     }
 
     public void simulator(){
-        for (int i = 0; i < months; i++) {
+        for (int i = 1; i <= months; i++) {
             MyLogger.writeLog(Level.FINE, "Simulating month: " + i);
             MonthlyIncrementer.incrementMonth(i);
 
             if (displayEveryMonth) {
                 getInformation();
-                OutputManager.outputData(i+1, fullCenters, openCenters, closedCenter, traineesTraining, waitingList );
+                OutputManager.outputData(i, fullCenters, openCenters, closedCenter, traineesTraining, waitingList );
             }
         }
 
@@ -52,7 +52,7 @@ public class SpartaSimulator {
         this.openCenters = CentreManager.countOpenCentres();
         this.fullCenters = CentreManager.getFullCentres();
         this.closedCenter = CentreManager.getClosedCentres();
-        this.traineesTraining = CentreManager.getFullTrainees();
+        this.traineesTraining = CentreManager.getTraineesCurrentlyTraining();
         this.waitingList = formatTrainees(TraineeManager.getWaitingList());
     }
 
@@ -61,19 +61,19 @@ public class SpartaSimulator {
         for (Trainee trainee: trainees) {
             switch (trainee.getCourse()){
                 case JAVA:
-                    formattedTrainees[0] ++;
+                    formattedTrainees[0]++;
                     break;
                 case DATA:
-                    formattedTrainees[1] ++;
+                    formattedTrainees[1]++;
                     break;
                 case DEVOPS:
-                    formattedTrainees[2] ++;
+                    formattedTrainees[2]++;
                     break;
                 case CSHARP:
-                    formattedTrainees[3] ++;
+                    formattedTrainees[3]++;
                     break;
                 case BUSINESS:
-                    formattedTrainees[4] ++;
+                    formattedTrainees[4]++;
                     break;
             }
         }
