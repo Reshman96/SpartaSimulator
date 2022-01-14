@@ -1,5 +1,5 @@
-#SpartaSimulator
-###Project 3 of Sparta Global's java engineering course.
+# SpartaSimulator
+### Project 3 of Sparta Global's java engineering course.
 
 SpartaSimulator is a program that models the growth of a training company.
 
